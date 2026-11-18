@@ -131,6 +131,32 @@
         <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener" class="btn-secondary">Explore Monorepo on GitHub</a>
       </div>
 
+      <!-- Gamification HUD Cockpit -->
+      <div class="gamification-hud">
+        <div class="hud-profile">
+          <div class="hud-rank-icon" id="hudRankIcon">⚡</div>
+          <div>
+            <div class="hud-rank-title" id="hudRankTitle">Cadet Operator (Lvl 1)</div>
+            <div class="hud-rank-sub" id="hudBadgeProgress">0 / 7 Trophies Unlocked</div>
+          </div>
+        </div>
+        <div class="hud-xp-container">
+          <div class="hud-xp-labels">
+            <span>EXPERIENCE POINTS</span>
+            <span id="hudXpText">0 / 1000 XP</span>
+          </div>
+          <div class="hud-xp-bar-outer">
+            <div class="hud-xp-bar-inner" id="hudXpBar" style="width: 5%;"></div>
+          </div>
+        </div>
+        <div class="hud-controls">
+          <button class="btn-audio-toggle active" id="audioToggleBtn" title="Toggle Sound Effects">
+            <span id="audioIcon">🔊</span>
+            <span id="audioLabel">SFX ON</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Quickstart Terminal Box -->
       <div class="hero-terminal">
         <span id="quickstartCode">git clone https://github.com/subash-thiruppathi/agent-os.git &amp;&amp; cd agent-os &amp;&amp; npm start</span>
@@ -407,6 +433,121 @@
               <div class="sim-result-data" id="sim-result-swarm">
                 // Payload output will render here upon execution
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.5 Gamified Achievements & Adversarial Cyber Arena -->
+  <section id="achievements">
+    <div class="container">
+      <div class="section-head">
+        <span class="badge">Operator Missions</span>
+        <h2>Fleet Achievement Trophies</h2>
+        <p>Run simulator actions and defend the agent runtime to unlock badges and level up your Fleet Commander rank.</p>
+      </div>
+
+      <!-- Trophy Case Grid -->
+      <div class="trophy-grid">
+        <div class="trophy-card locked" id="badge-cashhound">
+          <span class="trophy-icon">🪙</span>
+          <div class="trophy-name">Cash Hunter</div>
+          <div class="trophy-desc">Run DCF dunning cycle on delinquent invoice</div>
+          <span class="trophy-xp-tag">+100 XP</span>
+        </div>
+
+        <div class="trophy-card locked" id="badge-resolvex">
+          <span class="trophy-icon">⚡</span>
+          <div class="trophy-name">Dispute Slayer</div>
+          <div class="trophy-desc">Auto-refund double-billing under $100</div>
+          <span class="trophy-xp-tag">+100 XP</span>
+        </div>
+
+        <div class="trophy-card locked" id="badge-sentinelmesh">
+          <span class="trophy-icon">🛡️</span>
+          <div class="trophy-name">Zero-Trust Guard</div>
+          <div class="trophy-desc">Audit SHA-256 tamper-evident ledger</div>
+          <span class="trophy-xp-tag">+100 XP</span>
+        </div>
+
+        <div class="trophy-card locked" id="badge-localroar">
+          <span class="trophy-icon">📣</span>
+          <div class="trophy-name">Density Master</div>
+          <div class="trophy-desc">Inject route-density 15% discount on SMS lead</div>
+          <span class="trophy-xp-tag">+100 XP</span>
+        </div>
+
+        <div class="trophy-card locked" id="badge-pulsemd">
+          <span class="trophy-icon">🩺</span>
+          <div class="trophy-name">HIPAA Sentinel</div>
+          <div class="trophy-desc">Mask patient PHI into FHIR SOAP note</div>
+          <span class="trophy-xp-tag">+100 XP</span>
+        </div>
+
+        <div class="trophy-card locked" id="badge-omnilife">
+          <span class="trophy-icon">🌐</span>
+          <div class="trophy-name">Sovereign OS</div>
+          <div class="trophy-desc">Intercept contract cancellation early fee</div>
+          <span class="trophy-xp-tag">+100 XP</span>
+        </div>
+
+        <div class="trophy-card locked" id="badge-swarm">
+          <span class="trophy-icon">🐝</span>
+          <div class="trophy-name">Swarm General</div>
+          <div class="trophy-desc">Execute 5-stage sequential agent pipeline</div>
+          <span class="trophy-xp-tag">+250 XP</span>
+        </div>
+      </div>
+
+      <!-- Adversarial Defense Arena -->
+      <div class="defense-arena">
+        <div class="section-head" style="margin-bottom: 24px;">
+          <span class="badge" style="color: #ef4444;">Live Cyber Range</span>
+          <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 8px;">Adversarial Attack Defense Range</h3>
+          <p style="font-size: 0.95rem;">Test AgentOS security boundaries by firing real simulated cyber attacks against runtime defenses.</p>
+        </div>
+
+        <div class="defense-grid">
+          <div class="attack-menu">
+            <button class="btn-attack" onclick="triggerCyberAttack('coercion')">
+              <div class="attack-label-group">
+                <span>🚨 Attack 1: Coercive Prompt Injection</span>
+              </div>
+              <span class="attack-pill-threat">FDCPA Attack</span>
+            </button>
+
+            <button class="btn-attack" onclick="triggerCyberAttack('phi')">
+              <div class="attack-label-group">
+                <span>💉 Attack 2: Patient PHI Exfiltration Attempt</span>
+              </div>
+              <span class="attack-pill-threat">HIPAA Attack</span>
+            </button>
+
+            <button class="btn-attack" onclick="triggerCyberAttack('outage')">
+              <div class="attack-label-group">
+                <span>⚡ Attack 3: Stripe API 429 Cascading Outage</span>
+              </div>
+              <span class="attack-pill-threat">DoS / Rail Fail</span>
+            </button>
+
+            <button class="btn-attack" onclick="triggerCyberAttack('fraud')">
+              <div class="attack-label-group">
+                <span>📸 Attack 4: Stock Photo Screen Damage Scam</span>
+              </div>
+              <span class="attack-pill-threat">Vision Fraud</span>
+            </button>
+          </div>
+
+          <div class="defense-radar-box">
+            <div class="radar-header">
+              <span>SECURITY RADAR &amp; SHIELD TELEMETRY</span>
+              <span class="shield-status-active" id="shieldRadarStatus">● SHIELD ARMED</span>
+            </div>
+            <div class="radar-terminal" id="defenseRadarConsole">
+              [System Idle] Zero adversarial intrusions detected.<br>
+              Select an attack vector from the left to test runtime shield defenses...
             </div>
           </div>
         </div>
@@ -841,6 +982,10 @@
       </div>
     </div>
   </footer>
+
+  <!-- Neural Constellation Canvas & Confetti Canvas -->
+  <canvas id="neural-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
 
   <script src="app.js"></script>
 </body>
