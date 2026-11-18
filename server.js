@@ -16,6 +16,7 @@ import { parseIntake, CalendarAdapter } from './Booker/src/index.js';
 import { AgentMemoryGraph, MemoryPrivacyTier } from './agent-os-mobile/src/memory-graph.js';
 import { AgentSelfHealer } from './agent-os-mobile/src/self-healer.js';
 import { SpeculativeVerifier } from './agent-os-mobile/src/speculative-verifier.js';
+import { SpekraTelemetryBridge } from './agent-os-mobile/src/spekra-bridge.js';
 
 const PORT = 3000;
 
@@ -34,6 +35,7 @@ const calendar = new CalendarAdapter(90);
 const memoryGraph = new AgentMemoryGraph();
 const selfHealer = new AgentSelfHealer();
 const verifier = new SpeculativeVerifier();
+const spekraBridge = new SpekraTelemetryBridge({ environment: 'production' });
 
 // Pre-seed an entity memory
 memoryGraph.recordFact({
@@ -126,9 +128,40 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // Real-Time Server-Sent Events (SSE) Telemetry Stream (Spekra Live Bridge)
+  if (pathname === '/api/fleet/stream') {
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+      'Access-Control-Allow-Origin': '*'
+    });
+    res.write(`data: ${JSON.stringify({ type: 'CONNECTED', message: 'Connected to Spekra Live Telemetry Stream' })}\n\n`);
+
+    const telemetryHandler = (data) => {
+      res.write(`data: ${JSON.stringify(data)}\n\n`);
+    };
+
+    spekraBridge.on('telemetry', telemetryHandler);
+
+    req.on('close', () => {
+      spekraBridge.off('telemetry', telemetryHandler);
+    });
+    return;
+  }
+
+  // Spekra Telemetry Status
+  if (pathname === '/api/spekra/status') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(spekraBridge.getTelemetrySnapshot()));
+    return;
+  }
+
   // CashHound endpoint
   if (pathname === '/api/cashhound/cycle' && req.method === 'POST') {
+    const span = spekraBridge.startSpan({ name: 'cashhound_dunning_cycle', agentName: 'cashhound' });
     const summary = cashhound.runCycle();
+    spekraBridge.endSpan(span.spanId, { status: 'OK', output: summary });
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ success: true, summary, pending: cashhound.getPendingApprovals() }));
     return;
@@ -136,6 +169,7 @@ const server = http.createServer(async (req, res) => {
 
   // ResolveX endpoint
   if (pathname === '/api/resolvex/resolve' && req.method === 'POST') {
+    const span = spekraBridge.startSpan({ name: 'resolvex_dispute_resolution', agentName: 'resolvex' });
     const payload = await readJson();
     const result = await resolvex.resolveIssue({
       customer: payload.customer || { id: 'cust-demo-1', name: 'Demo User' },
@@ -148,6 +182,7 @@ const server = http.createServer(async (req, res) => {
         ]
       }
     });
+    spekraBridge.endSpan(span.spanId, { status: 'OK', output: result });
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(result));
     return;
@@ -155,8 +190,10 @@ const server = http.createServer(async (req, res) => {
 
   // LocalRoar endpoint
   if (pathname === '/api/localroar/inquiry' && req.method === 'POST') {
+    const span = spekraBridge.startSpan({ name: 'localroar_lead_inquiry', agentName: 'localroar' });
     const { text } = await readJson();
     const lead = localroar.handleInquiry(text || 'Emergency burst pipe! 555-019-4829', 'sms');
+    spekraBridge.endSpan(span.spanId, { status: 'OK', output: lead });
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(lead));
     return;
@@ -164,12 +201,14 @@ const server = http.createServer(async (req, res) => {
 
   // PulseMD endpoint
   if (pathname === '/api/pulsemd/encounter' && req.method === 'POST') {
+    const span = spekraBridge.startSpan({ name: 'pulsemd_clinical_encounter', agentName: 'pulsemd' });
     const payload = await readJson();
     const note = pulsemd.processEncounter(payload.encounter || {
       patientId: 'PT-901',
       chiefComplaint: 'Knee injury during soccer, severe pain. Contact: 555-392-1928, SSN: 000-12-3456',
       clinicianName: 'Dr. Sarah Smith, MD'
     });
+    spekraBridge.endSpan(span.spanId, { status: 'OK', output: note });
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(note));
     return;
@@ -177,7 +216,9 @@ const server = http.createServer(async (req, res) => {
 
   // OmniLife endpoint
   if (pathname === '/api/omnilife/audit') {
+    const span = spekraBridge.startSpan({ name: 'omnilife_life_audit', agentName: 'omnilife' });
     const status = omnilife.evaluateLifeOSStatus([], '2027-02-01T00:00:00Z', '2027-01-01T00:00:00Z');
+    spekraBridge.endSpan(span.spanId, { status: 'OK', output: status });
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(status));
     return;
@@ -188,6 +229,12 @@ const server = http.createServer(async (req, res) => {
     const { action } = await readJson();
     if (action === 'TRIP') {
       sentinel.quarantine('global', 'Emergency kill-switch triggered by administrator');
+      spekraBridge.dispatchIncidentAlert({
+        severity: 'CRITICAL',
+        faultSignature: 'ADMIN_KILLSWITCH_TRIPPED',
+        agentName: 'sentinelmesh',
+        message: 'Global agent execution quarantine activated by administrator'
+      });
     }
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ halted: sentinel.sandbox.isHalted('global'), auditLength: sentinel.sandbox.auditLedger.length }));

@@ -2,7 +2,7 @@
 
 [![Spekra Product](https://img.shields.io/badge/Product%20of-Spekra.in-38BDF8.svg)](https://spekra.in)
 [![CI Status](https://github.com/subash-thiruppathi/agent-os/actions/workflows/ci.yml/badge.svg)](https://github.com/subash-thiruppathi/agent-os/actions)
-[![Tests Passing](https://img.shields.io/badge/Tests-103%2F103%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
+[![Tests Passing](https://img.shields.io/badge/Tests-107%2F107%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
 [![Node Version](https://img.shields.io/badge/Node-%3E%3D20.0.0-3B82F6.svg)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Zero-Trust](https://img.shields.io/badge/Security-Zero--Trust%20Sandboxed-8B5CF6.svg)](https://github.com/subash-thiruppathi/agent-os)
@@ -117,6 +117,8 @@ npm test
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
 | `GET` | `/api/status` | Returns live health, uptime, and pending approvals for all agents. |
+| `GET` | `/api/fleet/stream` | Real-time Server-Sent Events (SSE) telemetry stream to Spekra cloud and mobile cockpit. |
+| `GET` | `/api/spekra/status` | Returns Spekra.in connectivity state, trace spans, and mirrored audit blocks snapshot. |
 | `GET` | `/api/memory/query?caller={agent}&entity={id}` | Queries privacy-partitioned facts from the cross-agent memory graph. |
 | `POST` | `/api/memory/record` | Ingests a validated semantic fact into the memory graph. |
 | `POST` | `/api/self-heal/test` | Triggers a simulated 429 fault and auto-heals over secondary rails. |
