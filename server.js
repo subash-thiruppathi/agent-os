@@ -1,5 +1,12 @@
 import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { CashHoundAgent, Invoice } from './CashHound/src/index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const WEBSITE_DIR = path.join(__dirname, 'website');
 import { ResolveXAgent } from './ResolveX/src/index.js';
 import { SentinelGovernor, PermissionScope } from './SentinelMesh/src/index.js';
 import { LocalRoarAgent } from './LocalRoar/src/index.js';
@@ -245,8 +252,37 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // HTML Dashboard UI
-  if (pathname === '/' || pathname === '/dashboard') {
+  // Static Website from ./website
+  if (pathname === '/') {
+    const indexPath = path.join(WEBSITE_DIR, 'index.html');
+    if (fs.existsSync(indexPath)) {
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(fs.readFileSync(indexPath));
+      return;
+    }
+  }
+
+  const staticExts = {
+    '.css': 'text/css; charset=utf-8',
+    '.js': 'application/javascript; charset=utf-8',
+    '.svg': 'image/svg+xml',
+    '.json': 'application/json',
+    '.png': 'image/png',
+    '.txt': 'text/plain',
+    '.xml': 'application/xml'
+  };
+  const ext = path.extname(pathname).toLowerCase();
+  if (staticExts[ext]) {
+    const filePath = path.join(WEBSITE_DIR, pathname.replace(/^\//, ''));
+    if (fs.existsSync(filePath)) {
+      res.writeHead(200, { 'Content-Type': staticExts[ext] });
+      res.end(fs.readFileSync(filePath));
+      return;
+    }
+  }
+
+  // Live Fleet Operator Console UI
+  if (pathname === '/fleet' || pathname === '/dashboard') {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(`<!DOCTYPE html>
 <html lang="en">

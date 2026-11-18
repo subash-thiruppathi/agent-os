@@ -1,0 +1,9 @@
+{
+  "origin": "https://agent-os.dev",
+  "name": "AgentOS",
+  "tagline": "The Autonomous Agent Operating System",
+  "reviewedAt": "2026-11-18",
+  "githubUrl": "https://github.com/subash-thiruppathi/agent-os",
+  "contactEmail": "subashthiruppathy@gmail.com",
+  "license": "MIT"
+}

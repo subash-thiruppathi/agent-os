@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentOS — The Autonomous Agent Operating System</title>
+  <meta name="description" content="Production-grade autonomous agent operating system: zero-trust governance fabric, speculative verifiers, cross-agent memory graphs, auto-healing rails, and mobile human-in-the-loop oversight.">
+  <meta name="author" content="Subash Thiruppathy">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#070b14">
+  <link rel="canonical" href="https://agent-os.dev/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AgentOS">
+  <meta property="og:title" content="AgentOS — The Autonomous Agent Operating System">
+  <meta property="og:description" content="Production-grade autonomous agent operating system: zero-trust governance fabric, speculative verifiers, cross-agent memory graphs, auto-healing rails, and mobile human-in-the-loop oversight.">
+  <meta property="og:url" content="https://agent-os.dev/">
+  <meta property="og:image" content="https://agent-os.dev/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AgentOS — The Autonomous Agent Operating System">
+  <meta name="twitter:description" content="Run a self-healing, zero-trust autonomous agent fleet. Governed by speculative verifiers and native mobile oversight.">
+  <meta name="twitter:image" content="https://agent-os.dev/social-preview.png">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://agent-os.dev/#software",
+        "name": "AgentOS",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Linux, macOS, iOS, Android, Cloudflare",
+        "url": "https://agent-os.dev/",
+        "description": "Production-grade autonomous agent operating system featuring speculative verifiers, cross-agent memory graph, and zero-trust mobile governance."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://agent-os.dev/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What makes AgentOS different from basic LLM agent frameworks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AgentOS provides an outcome-driven production runtime: speculative action verifiers ensure minor-unit penny exact math and FDCPA compliance before execution; privacy-partitioned memory graphs guarantee healthcare data never leaks to commercial bots; and hardware FaceID gates provide cryptographic human authorization."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does AgentOS handle API outages or rate limits?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The built-in AgentSelfHealer automatically classifies faults (429, transient network, rail unavailable), performs intelligent exponential backoff with jitter, and hot-fails over to alternate secondary rails without crashing active workflows."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can AgentOS agents run completely autonomously?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Routine actions under predefined financial and risk ceilings (e.g. refunds under $100 or courtesy reminders) execute autonomously. High-value transactions trigger hardware biometric challenges on the mobile cockpit."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1. Top Announcement Bar -->
+  <div class="top-banner">
+    <span class="top-banner-pill">⚡ V1.0 RELEASE</span>
+    <span>AgentOS is live: 7 autonomous production agents with zero-trust governance &amp; mobile cockpit.</span>
+    <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener" class="top-banner-link">View GitHub Repository &rarr;</a>
+  </div>
+
+  <!-- 2. Sticky Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand">
+        <div class="logo-badge">⚡</div>
+        <span>AgentOS</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#simulator" class="nav-link">Live Simulator</a>
+        <a href="#engines" class="nav-link">Core Engines</a>
+        <a href="#agents" class="nav-link">Agents Fleet</a>
+        <a href="#calculator" class="nav-link">ROI Calculator</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener" class="btn-github">
+          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          <span>Star on GitHub</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 3. Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span>⚡ THE AUTONOMOUS AGENT RUNTIME</span>
+      </div>
+
+      <h1>
+        The Autonomous Agent<br>
+        <span class="gradient-text">Operating System</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Run a production-grade fleet of self-healing, zero-trust autonomous AI agents. From high-velocity revenue recovery to ambient clinical charting — governed by speculative action verifiers and real-time mobile biometric oversight.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#simulator" class="btn-primary">Launch Live Simulator</a>
+        <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener" class="btn-secondary">Explore Monorepo on GitHub</a>
+      </div>
+
+      <!-- Quickstart Terminal Box -->
+      <div class="hero-terminal">
+        <span id="quickstartCode">git clone https://github.com/subash-thiruppathi/agent-os.git &amp;&amp; cd agent-os &amp;&amp; npm start</span>
+        <button class="btn-copy" id="copyBtn">Copy</button>
+      </div>
+
+      <!-- Live Fleet Status Pill -->
+      <div class="status-bar-wrapper">
+        <div class="pulse-dot"></div>
+        <span>ALL 7 AGENTS ONLINE · 103/103 TESTS PASSING · ZERO SECURITY VIOLATIONS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Interactive Simulator Section -->
+  <section id="simulator">
+    <div class="container">
+      <div class="section-head">
+        <span class="badge">Live Playground</span>
+        <h2>Interactive Fleet Simulator</h2>
+        <p>Trigger autonomous workflows in real-time. Inspect pre-execution verification gates, privacy partitions, and tamper-evident audit records.</p>
+      </div>
+
+      <div class="simulator-container">
+        <!-- Navigation Tabs -->
+        <div class="sim-nav">
+          <button class="sim-tab-btn active" data-target="panel-cashhound">🪙 CashHound</button>
+          <button class="sim-tab-btn" data-target="panel-resolvex">⚡ ResolveX</button>
+          <button class="sim-tab-btn" data-target="panel-sentinelmesh">🛡️ SentinelMesh</button>
+          <button class="sim-tab-btn" data-target="panel-localroar">📣 LocalRoar</button>
+          <button class="sim-tab-btn" data-target="panel-pulsemd">🩺 PulseMD</button>
+          <button class="sim-tab-btn" data-target="panel-omnilife">🌐 OmniLife</button>
+          <button class="sim-tab-btn" data-target="panel-swarm">🐝 5-Stage Swarm</button>
+        </div>
+
+        <!-- Panel 1: CashHound -->
+        <div class="sim-panel active" id="panel-cashhound">
+          <div class="sim-split">
+            <div class="sim-config">
+              <div>
+                <h3 class="sim-title">🪙 CashHound — Autonomous Working Capital Recovery</h3>
+                <p class="sim-desc">Evaluates delinquent invoice INV-1094 ($8,400 past due 38 days) against the discounted cash flow NPV curve. Generates respectful dunning notices with dynamic lump-sum settlement discounts.</p>
+                <div class="sim-stats-grid">
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Pipeline Balance</div>
+                    <div class="sim-stat-value">$8,400.00</div>
+                  </div>
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Aging Classification</div>
+                    <div class="sim-stat-value">30+ Days Tier 3</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-trigger" onclick="runAgentSim('cashhound')">Execute DCF Recovery Cycle</button>
+            </div>
+            <div class="sim-output-box">
+              <div class="sim-output-header">
+                <span>Execution Logs</span>
+                <span class="status-pill pill-idle" id="sim-status-cashhound">IDLE</span>
+              </div>
+              <div class="sim-terminal" id="sim-console-cashhound">
+                [Ready] Click "Execute DCF Recovery Cycle" to simulate autonomous debt collection...
+              </div>
+              <div class="sim-result-data" id="sim-result-cashhound">
+                // Payload output will render here upon execution
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: ResolveX -->
+        <div class="sim-panel" id="panel-resolvex">
+          <div class="sim-split">
+            <div class="sim-config">
+              <div>
+                <h3 class="sim-title">⚡ ResolveX — Autonomous Customer Care Concierge</h3>
+                <p class="sim-desc">Ingests customer complaint: "Charged twice for subscription". Diagnoses duplicate transaction ID within 1.2s window, verifies $100 autonomous limit, and executes idempotent refund with apology credit.</p>
+                <div class="sim-stats-grid">
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Autonomous Limit</div>
+                    <div class="sim-stat-value">&le; $100.00</div>
+                  </div>
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Resolution Speed</div>
+                    <div class="sim-stat-value">380 ms</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-trigger" onclick="runAgentSim('resolvex')">Simulate Double-Billing Auto-Refund</button>
+            </div>
+            <div class="sim-output-box">
+              <div class="sim-output-header">
+                <span>Execution Logs</span>
+                <span class="status-pill pill-idle" id="sim-status-resolvex">IDLE</span>
+              </div>
+              <div class="sim-terminal" id="sim-console-resolvex">
+                [Ready] Click "Simulate Double-Billing Auto-Refund" to test auto-diagnosis...
+              </div>
+              <div class="sim-result-data" id="sim-result-resolvex">
+                // Payload output will render here upon execution
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: SentinelMesh -->
+        <div class="sim-panel" id="panel-sentinelmesh">
+          <div class="sim-split">
+            <div class="sim-config">
+              <div>
+                <h3 class="sim-title">🛡️ SentinelMesh — Zero-Trust Governance Fabric</h3>
+                <p class="sim-desc">Enforces least-privilege permission boundaries, tamper-evident SHA-256 block ledger immutability, and instant administrative quarantine killswitches.</p>
+                <div class="sim-stats-grid">
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Frozen Ledger Blocks</div>
+                    <div class="sim-stat-value">1,493 Blocks</div>
+                  </div>
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Killswitch Status</div>
+                    <div class="sim-stat-value">ARMED (0 Faults)</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-trigger" onclick="runAgentSim('sentinelmesh')">Verify Governance &amp; Audit Blocks</button>
+            </div>
+            <div class="sim-output-box">
+              <div class="sim-output-header">
+                <span>Execution Logs</span>
+                <span class="status-pill pill-idle" id="sim-status-sentinelmesh">IDLE</span>
+              </div>
+              <div class="sim-terminal" id="sim-console-sentinelmesh">
+                [Ready] Click "Verify Governance & Audit Blocks" to inspect tamper-evident audit trail...
+              </div>
+              <div class="sim-result-data" id="sim-result-sentinelmesh">
+                // Payload output will render here upon execution
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4: LocalRoar -->
+        <div class="sim-panel" id="panel-localroar">
+          <div class="sim-split">
+            <div class="sim-config">
+              <div>
+                <h3 class="sim-title">📣 LocalRoar — 24/7 Local Business Growth Machine</h3>
+                <p class="sim-desc">Parses incoming emergency SMS, matches nearby technician route density, and injects a 15% proximity discount to lock in instant appointment conversion.</p>
+                <div class="sim-stats-grid">
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Lead Channel</div>
+                    <div class="sim-stat-value">Inbound SMS</div>
+                  </div>
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Proximity Match</div>
+                    <div class="sim-stat-value">1.4 Miles Away</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-trigger" onclick="runAgentSim('localroar')">Process Emergency SMS Lead</button>
+            </div>
+            <div class="sim-output-box">
+              <div class="sim-output-header">
+                <span>Execution Logs</span>
+                <span class="status-pill pill-idle" id="sim-status-localroar">IDLE</span>
+              </div>
+              <div class="sim-terminal" id="sim-console-localroar">
+                [Ready] Click "Process Emergency SMS Lead" to test route density matcher...
+              </div>
+              <div class="sim-result-data" id="sim-result-localroar">
+                // Payload output will render here upon execution
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 5: PulseMD -->
+        <div class="sim-panel" id="panel-pulsemd">
+          <div class="sim-split">
+            <div class="sim-config">
+              <div>
+                <h3 class="sim-title">🩺 PulseMD — Ambient Clinical Charting &amp; Safety Guard</h3>
+                <p class="sim-desc">Extracts dialogue into structured FHIR observations, screens for drug-allergy contraindications, and redacts patient SSN/phone numbers before chart finalization.</p>
+                <div class="sim-stats-grid">
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">PHI Redaction</div>
+                    <div class="sim-stat-value">SSN &amp; Tel Masked</div>
+                  </div>
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Safety Screen</div>
+                    <div class="sim-stat-value">Allergies Clear</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-trigger" onclick="runAgentSim('pulsemd')">Scribe Encounter &amp; Redact PHI</button>
+            </div>
+            <div class="sim-output-box">
+              <div class="sim-output-header">
+                <span>Execution Logs</span>
+                <span class="status-pill pill-idle" id="sim-status-pulsemd">IDLE</span>
+              </div>
+              <div class="sim-terminal" id="sim-console-pulsemd">
+                [Ready] Click "Scribe Encounter & Redact PHI" to test clinical documentation pipeline...
+              </div>
+              <div class="sim-result-data" id="sim-result-pulsemd">
+                // Payload output will render here upon execution
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 6: OmniLife -->
+        <div class="sim-panel" id="panel-omnilife">
+          <div class="sim-split">
+            <div class="sim-config">
+              <div>
+                <h3 class="sim-title">🌐 OmniLife — Sovereign Life Operating System</h3>
+                <p class="sim-desc">Detects dormant gym subscriptions ($180/mo unused for 110 days), intercepts contract early termination fees, and validates 6-month passport validity rules for travel.</p>
+                <div class="sim-stats-grid">
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Dormant Leaks</div>
+                    <div class="sim-stat-value">1 Subscription</div>
+                  </div>
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Early Penalty</div>
+                    <div class="sim-stat-value">$50.00 Gated</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-trigger" onclick="runAgentSim('omnilife')">Audit Subscriptions &amp; Travel</button>
+            </div>
+            <div class="sim-output-box">
+              <div class="sim-output-header">
+                <span>Execution Logs</span>
+                <span class="status-pill pill-idle" id="sim-status-omnilife">IDLE</span>
+              </div>
+              <div class="sim-terminal" id="sim-console-omnilife">
+                [Ready] Click "Audit Subscriptions & Travel" to inspect dormant recurring charges...
+              </div>
+              <div class="sim-result-data" id="sim-result-omnilife">
+                // Payload output will render here upon execution
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 7: Swarm -->
+        <div class="sim-panel" id="panel-swarm">
+          <div class="sim-split">
+            <div class="sim-config">
+              <div>
+                <h3 class="sim-title">🐝 AgentOS Swarm — 5-Stage Orchestrator</h3>
+                <p class="sim-desc">Executes sequential cross-agent pipeline: LocalRoar (Lead) &rarr; Booker (Slot) &rarr; Sidekick (Evidence) &rarr; Clerk (Invoice) &rarr; SentinelMesh (Security Seal).</p>
+                <div class="sim-stats-grid">
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Pipeline Depth</div>
+                    <div class="sim-stat-value">5 Agents</div>
+                  </div>
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Execution Time</div>
+                    <div class="sim-stat-value">42 ms Total</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn-trigger" onclick="runAgentSim('swarm')">Execute 5-Stage Swarm</button>
+            </div>
+            <div class="sim-output-box">
+              <div class="sim-output-header">
+                <span>Execution Logs</span>
+                <span class="status-pill pill-idle" id="sim-status-swarm">IDLE</span>
+              </div>
+              <div class="sim-terminal" id="sim-console-swarm">
+                [Ready] Click "Execute 5-Stage Swarm" to run multi-agent coordination...
+              </div>
+              <div class="sim-result-data" id="sim-result-swarm">
+                // Payload output will render here upon execution
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Core Platform Engines Grid -->
+  <section id="engines">
+    <div class="container">
+      <div class="section-head">
+        <span class="badge">Architecture</span>
+        <h2>The 6 Core Platform Engines</h2>
+        <p>Built for zero data leaks, resilient API failovers, and verifiable mathematical accuracy before actions hit human approval stacks.</p>
+      </div>
+
+      <div class="engines-grid">
+        <!-- Engine 1 -->
+        <div class="engine-card">
+          <div class="engine-top">
+            <div class="engine-icon">🧠</div>
+            <div>
+              <div class="engine-title">AgentMemoryGraph</div>
+              <div class="engine-tag">Privacy Partitions</div>
+            </div>
+          </div>
+          <p class="engine-desc">Cross-agent semantic memory with cryptographic isolation tiers: PUBLIC, ORGANIZATION, CONFIDENTIAL, and RESTRICTED_PHI.</p>
+          <ul class="engine-bullets">
+            <li><span class="check">&#10003;</span> Prevents medical PHI from leaking to commercial bots</li>
+            <li><span class="check">&#10003;</span> Invalidation lifecycle supersedes outdated facts</li>
+            <li><span class="check">&#10003;</span> Confidence scoring &amp; TTL-based observation aging</li>
+          </ul>
+        </div>
+
+        <!-- Engine 2 -->
+        <div class="engine-card">
+          <div class="engine-top">
+            <div class="engine-icon">🩹</div>
+            <div>
+              <div class="engine-title">AgentSelfHealer</div>
+              <div class="engine-tag">Auto-Recovery &amp; Failover</div>
+            </div>
+          </div>
+          <p class="engine-desc">Intelligent fault classifier and exponential retry engine with seamless fallback to secondary payment and API rails.</p>
+          <ul class="engine-bullets">
+            <li><span class="check">&#10003;</span> Classifies 429 rate limits &amp; network disconnects</li>
+            <li><span class="check">&#10003;</span> Exponential backoff with jittered retry intervals</li>
+            <li><span class="check">&#10003;</span> Seamless rail failover (e.g. Stripe &rarr; Adyen)</li>
+          </ul>
+        </div>
+
+        <!-- Engine 3 -->
+        <div class="engine-card">
+          <div class="engine-top">
+            <div class="engine-icon">🔍</div>
+            <div>
+              <div class="engine-title">SpeculativeVerifier</div>
+              <div class="engine-tag">Second Pair of Eyes</div>
+            </div>
+          </div>
+          <p class="engine-desc">Pre-execution guardrail evaluating proposed actions for minor-unit integer math reconciliation and regulatory tone safety.</p>
+          <ul class="engine-bullets">
+            <li><span class="check">&#10003;</span> Reconciles line-item breakdown cents to total cents</li>
+            <li><span class="check">&#10003;</span> Blocks prohibited coercive debt collection language</li>
+            <li><span class="check">&#10003;</span> Flags high-exposure transactions for dual executive sign-off</li>
+          </ul>
+        </div>
+
+        <!-- Engine 4 -->
+        <div class="engine-card">
+          <div class="engine-top">
+            <div class="engine-icon">🐝</div>
+            <div>
+              <div class="engine-title">AgentOSSwarm</div>
+              <div class="engine-tag">Pipeline Orchestration</div>
+            </div>
+          </div>
+          <p class="engine-desc">Stateful orchestrator driving complex multi-agent workflows through sequential, verifiable lifecycle steps.</p>
+          <ul class="engine-bullets">
+            <li><span class="check">&#10003;</span> Chains intake, scheduling, field proof, and billing</li>
+            <li><span class="check">&#10003;</span> Enforces state transitions under SentinelMesh governance</li>
+            <li><span class="check">&#10003;</span> Immutable task handover records with execution timestamps</li>
+          </ul>
+        </div>
+
+        <!-- Engine 5 -->
+        <div class="engine-card">
+          <div class="engine-top">
+            <div class="engine-icon">🔐</div>
+            <div>
+              <div class="engine-title">BiometricController</div>
+              <div class="engine-tag">Hardware FaceID Gate</div>
+            </div>
+          </div>
+          <p class="engine-desc">Cryptographic challenge-nonce generator binding high-value agent actions to hardware-backed biometric verification.</p>
+          <ul class="engine-bullets">
+            <li><span class="check">&#10003;</span> Single-use 256-bit nonces block replay attacks</li>
+            <li><span class="check">&#10003;</span> Secure Enclave FaceID / TouchID biometric signature</li>
+            <li><span class="check">&#10003;</span> ServerApprovalGateway enforces dual-control authorization</li>
+          </ul>
+        </div>
+
+        <!-- Engine 6 -->
+        <div class="engine-card">
+          <div class="engine-top">
+            <div class="engine-icon">🎙️</div>
+            <div>
+              <div class="engine-title">VoiceCockpit</div>
+              <div class="engine-tag">Hands-Free Speech Intent</div>
+            </div>
+          </div>
+          <p class="engine-desc">Natural speech interpreter enabling operators to command the entire fleet hands-free with synthesized audio replies.</p>
+          <ul class="engine-bullets">
+            <li><span class="check">&#10003;</span> Parses spoken intents into verified agent actions</li>
+            <li><span class="check">&#10003;</span> Audio status broadcasts for executive decision stacks</li>
+            <li><span class="check">&#10003;</span> Low-latency on-device processing via mobile cockpit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. The 7 Autonomous Agents Showcase Grid -->
+  <section id="agents">
+    <div class="container">
+      <div class="section-head">
+        <span class="badge">Fleet Matrix</span>
+        <h2>The 7 Autonomous Production Agents</h2>
+        <p>Pre-built, battle-tested agent applications designed for immediate enterprise deployment with verifiable ROI.</p>
+      </div>
+
+      <div class="agents-grid">
+        <!-- Agent 1 -->
+        <div class="agent-card">
+          <div>
+            <div class="agent-header">
+              <div>
+                <div class="agent-name">🪙 CashHound</div>
+                <div class="agent-domain">B2B Working Capital &amp; Collections</div>
+              </div>
+              <span class="agent-badge badge-green">FINTECH</span>
+            </div>
+            <p class="agent-body">Automates dunning workflows using Discounted Cash Flow (DCF) NPV optimization. Auto-reconciles bank ACH memos and offers lump-sum early payment discounts.</p>
+            <div class="agent-metrics-row">
+              <div class="agent-metric">
+                <div class="agent-metric-label">Recovery Rate</div>
+                <div class="agent-metric-val">+34% Faster</div>
+              </div>
+              <div class="agent-metric">
+                <div class="agent-metric-label">Tone Safety</div>
+                <div class="agent-metric-val">100% FDCPA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent 2 -->
+        <div class="agent-card">
+          <div>
+            <div class="agent-header">
+              <div>
+                <div class="agent-name">⚡ ResolveX</div>
+                <div class="agent-domain">Customer Care &amp; Dispute Concierge</div>
+              </div>
+              <span class="agent-badge badge-blue">E-COMMERCE</span>
+            </div>
+            <p class="agent-body">Computer vision damage assessor and carrier webhook listener. Auto-resolves 94.2% of routine disputes (&le; $100) with cryptographic SHA-256 idempotency replay protection.</p>
+            <div class="agent-metrics-row">
+              <div class="agent-metric">
+                <div class="agent-metric-label">Auto-Resolved</div>
+                <div class="agent-metric-val">94.2%</div>
+              </div>
+              <div class="agent-metric">
+                <div class="agent-metric-label">Avg Resolution</div>
+                <div class="agent-metric-val">&lt; 500 ms</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent 3 -->
+        <div class="agent-card">
+          <div>
+            <div class="agent-header">
+              <div>
+                <div class="agent-name">🛡️ SentinelMesh</div>
+                <div class="agent-domain">Zero-Trust Agent Governance</div>
+              </div>
+              <span class="agent-badge badge-purple">SECURITY</span>
+            </div>
+            <p class="agent-body">Least-privilege permission sandbox enforcing spending caps and dual-control approvals. Maintains a tamper-evident SHA-256 block ledger with global killswitch quarantine.</p>
+            <div class="agent-metrics-row">
+              <div class="agent-metric">
+                <div class="agent-metric-label">Audit Ledger</div>
+                <div class="agent-metric-val">SHA-256 Frozen</div>
+              </div>
+              <div class="agent-metric">
+                <div class="agent-metric-label">Violations</div>
+                <div class="agent-metric-val">0 Tolerated</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent 4 -->
+        <div class="agent-card">
+          <div>
+            <div class="agent-header">
+              <div>
+                <div class="agent-name">📣 LocalRoar</div>
+                <div class="agent-domain">Local Service Growth &amp; Dispatch</div>
+              </div>
+              <span class="agent-badge badge-orange">GROWTH</span>
+            </div>
+            <p class="agent-body">24/7 SMS and WhatsApp lead intake. Matches proximity to technician routes to inject 10–15% route-density discounts while privately intercepting unhappy customer reviews.</p>
+            <div class="agent-metrics-row">
+              <div class="agent-metric">
+                <div class="agent-metric-label">Lead Conversion</div>
+                <div class="agent-metric-val">68% Closes</div>
+              </div>
+              <div class="agent-metric">
+                <div class="agent-metric-label">Routing Density</div>
+                <div class="agent-metric-val">+22% Efficiency</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent 5 -->
+        <div class="agent-card">
+          <div>
+            <div class="agent-header">
+              <div>
+                <div class="agent-name">🩺 PulseMD</div>
+                <div class="agent-domain">Clinical Charting &amp; Prior-Auth</div>
+              </div>
+              <span class="agent-badge badge-purple">HEALTHCARE</span>
+            </div>
+            <p class="agent-body">Ambient clinician scribe parsing patient-doctor audio into FHIR-ready SOAP notes. Automatically redacts SSNs and phone numbers while checking for drug-drug allergies.</p>
+            <div class="agent-metrics-row">
+              <div class="agent-metric">
+                <div class="agent-metric-label">PHI Masking</div>
+                <div class="agent-metric-val">100% HIPAA</div>
+              </div>
+              <div class="agent-metric">
+                <div class="agent-metric-label">Doctor Time Saved</div>
+                <div class="agent-metric-val">2.4 hrs / day</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent 6 -->
+        <div class="agent-card">
+          <div>
+            <div class="agent-header">
+              <div>
+                <div class="agent-name">🌐 OmniLife</div>
+                <div class="agent-domain">Sovereign Life Operating System</div>
+              </div>
+              <span class="agent-badge badge-pink">PERSONAL OS</span>
+            </div>
+            <p class="agent-body">Scans bills for expired promotional rates, generates telecom negotiation battlecards, navigates retention maze cancellations, and audits passport international travel rules.</p>
+            <div class="agent-metrics-row">
+              <div class="agent-metric">
+                <div class="agent-metric-label">Annual Savings</div>
+                <div class="agent-metric-val">$740 / user</div>
+              </div>
+              <div class="agent-metric">
+                <div class="agent-metric-label">Penalty Gate</div>
+                <div class="agent-metric-val">Protected</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent 7 -->
+        <div class="agent-card">
+          <div>
+            <div class="agent-header">
+              <div>
+                <div class="agent-name">📅 Booker</div>
+                <div class="agent-domain">Autonomous Dispatch &amp; Intake</div>
+              </div>
+              <span class="agent-badge badge-blue">SCHEDULING</span>
+            </div>
+            <p class="agent-body">Transforms unstructured voice notes and emails into confirmed calendar slots, avoiding double-bookings and managing customer appointment revisions.</p>
+            <div class="agent-metrics-row">
+              <div class="agent-metric">
+                <div class="agent-metric-label">Slot Locking</div>
+                <div class="agent-metric-val">Zero Overlaps</div>
+              </div>
+              <div class="agent-metric">
+                <div class="agent-metric-label">Intake Accuracy</div>
+                <div class="agent-metric-val">99.1%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Interactive ROI Calculator Section -->
+  <section id="calculator">
+    <div class="container">
+      <div class="section-head">
+        <span class="badge">Value Model</span>
+        <h2>Estimated Annual ROI Calculator</h2>
+        <p>Adjust parameters to calculate the annual dollar savings and reclaimed operator hours generated by AgentOS across your organization.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <div>
+            <!-- Slider 1 -->
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Delinquent Invoices / Month</span>
+                <span class="slider-val-badge" id="calc-invoices-val">50</span>
+              </div>
+              <input type="range" id="calc-invoices" min="10" max="500" step="5" value="50">
+            </div>
+
+            <!-- Slider 2 -->
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Support Disputes &amp; Tickets / Month</span>
+                <span class="slider-val-badge" id="calc-disputes-val">300</span>
+              </div>
+              <input type="range" id="calc-disputes" min="50" max="2500" step="25" value="300">
+            </div>
+
+            <!-- Slider 3 -->
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Monthly Corporate Subscription Spend</span>
+                <span class="slider-val-badge" id="calc-subs-val">$12,000</span>
+              </div>
+              <input type="range" id="calc-subs" min="2000" max="100000" step="1000" value="12000">
+            </div>
+          </div>
+
+          <div class="calc-summary-box">
+            <div class="calc-result-label">Estimated Annual Impact</div>
+            <div class="calc-result-number" id="calc-total-savings">$173,800</div>
+            <div class="calc-submetrics">
+              <div>
+                <div class="agent-metric-label">Hours Reclaimed</div>
+                <div class="calc-submetric-val" id="calc-hours-reclaimed">1,890 hrs</div>
+              </div>
+              <div>
+                <div class="agent-metric-label">Recovery Uplift</div>
+                <div class="calc-submetric-val">+34% Cash</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ Section -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="badge">Questions &amp; Answers</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about security, deployment models, and compliance boundaries.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item active">
+          <div class="faq-question">
+            <span>What makes AgentOS different from basic LLM agent frameworks?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            AgentOS is engineered for production safety and zero-liability autonomy. Basic frameworks execute raw unverified strings; AgentOS enforces speculative verifiers for penny-exact minor unit math, scans messages for prohibited coercive debt collection phrases, and gates high-value transactions behind Secure Enclave FaceID biometrics.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How are healthcare facts kept separate from commercial agents?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            The AgentMemoryGraph enforces four cryptographic privacy partitions: PUBLIC, ORGANIZATION, CONFIDENTIAL, and RESTRICTED_PHI. Clinical scribe data from PulseMD is strictly sealed in RESTRICTED_PHI, which commercial dunning or marketing agents (like CashHound or LocalRoar) are cryptographically denied access to read.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How does the self-healing engine recover from payment gateway rate limits?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            AgentSelfHealer continuously classifies tool and API errors. When a 429 Rate Limit or transient network error occurs, it executes intelligent exponential backoff with jitter. If the primary rail remains down, it automatically fails over to preconfigured secondary rails (e.g. Adyen) without dropping active tasks.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Where can AgentOS be hosted and deployed?</span>
+            <span class="faq-arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer">
+            AgentOS is cloud-agnostic. The server runs as a standard Node.js daemon (Node 20+) on any Linux VM, macOS machine, or Docker container. The static web dashboard and documentation deploy natively to Cloudflare Pages (via wrangler.json) or GitHub Pages. The mobile command center runs on iOS and Android via React Native and Expo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="brand">
+          <div class="logo-badge">⚡</div>
+          <span>AgentOS</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener">GitHub Monorepo</a>
+          <a href="mailto:subashthiruppathy@gmail.com">Contact Support</a>
+          <a href="https://github.com/subash-thiruppathi/agent-os/blob/main/README.md" target="_blank" rel="noopener">Documentation</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AgentOS · Created by Subash Thiruppathy · MIT Licensed · Production Agentic Runtime</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
