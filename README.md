@@ -1,7 +1,7 @@
 # ⚡ AgentOS — The Autonomous Agent Operating System
 
 [![Spekra Product](https://img.shields.io/badge/Product%20of-Spekra.in-38BDF8.svg)](https://spekra.in)
-[![npm version](https://img.shields.io/badge/npm-%40spekra%2Fagent--os-CB3837.svg)](https://www.npmjs.com/package/@spekra/agent-os)
+[![npm version](https://img.shields.io/badge/npm-%40spekra.in%2Fagent--os-CB3837.svg)](https://www.npmjs.com/package/@spekra.in/agent-os)
 [![CI Status](https://github.com/subash-thiruppathi/agent-os/actions/workflows/ci.yml/badge.svg)](https://github.com/subash-thiruppathi/agent-os/actions)
 [![Tests Passing](https://img.shields.io/badge/Tests-116%2F116%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
 [![Node Version](https://img.shields.io/badge/Node-%3E%3D20.0.0-3B82F6.svg)](https://nodejs.org/)
@@ -90,7 +90,7 @@ flowchart TD
 
 ### Option A: Install via npm (SDK & CLI)
 ```bash
-npm install @spekra/agent-os
+npm install @spekra.in/agent-os
 ```
 
 Import AgentOS primitives in your JavaScript / TypeScript application:
@@ -103,7 +103,7 @@ import {
   SentinelGovernor,
   SpekraTelemetryBridge,
   AgentOSSwarm
-} from '@spekra/agent-os';
+} from '@spekra.in/agent-os';
 
 // Run speculative math & tone verifier
 const verifier = new SpeculativeVerifier();

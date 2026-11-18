@@ -26,7 +26,7 @@ import {
   EvidenceRegistry
 } from '../src/index.js';
 
-test('@spekra/agent-os SDK Root Exports', async (t) => {
+test('@spekra.in/agent-os SDK Root Exports', async (t) => {
   await t.test('Core Engine Classes & Enums', () => {
     assert.ok(typeof SpeculativeVerifier === 'function');
     assert.ok(typeof AgentMemoryGraph === 'function');

@@ -1,5 +1,5 @@
 /**
- * @spekra/agent-os
+ * @spekra.in/agent-os
  * The Autonomous Multi-Agent Operating System & Swarm Runtime for Spekra.in
  *
  * Core Modules Exported:

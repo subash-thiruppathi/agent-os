@@ -1,5 +1,5 @@
 {
-  "name": "@spekra/agent-os",
+  "name": "@spekra.in/agent-os",
   "version": "1.0.0",
   "description": "AgentOS Autonomous Multi-Agent Swarm Runtime and Governance SDK for Spekra.in",
   "main": "src/index.js",
