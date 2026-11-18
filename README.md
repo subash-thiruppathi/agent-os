@@ -1,8 +1,9 @@
 # ⚡ AgentOS — The Autonomous Agent Operating System
 
 [![Spekra Product](https://img.shields.io/badge/Product%20of-Spekra.in-38BDF8.svg)](https://spekra.in)
+[![npm version](https://img.shields.io/badge/npm-%40spekra%2Fagent--os-CB3837.svg)](https://www.npmjs.com/package/@spekra/agent-os)
 [![CI Status](https://github.com/subash-thiruppathi/agent-os/actions/workflows/ci.yml/badge.svg)](https://github.com/subash-thiruppathi/agent-os/actions)
-[![Tests Passing](https://img.shields.io/badge/Tests-112%2F112%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
+[![Tests Passing](https://img.shields.io/badge/Tests-116%2F116%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
 [![Node Version](https://img.shields.io/badge/Node-%3E%3D20.0.0-3B82F6.svg)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Zero-Trust](https://img.shields.io/badge/Security-Zero--Trust%20Sandboxed-8B5CF6.svg)](https://github.com/subash-thiruppathi/agent-os)
@@ -85,27 +86,69 @@ flowchart TD
 
 ---
 
-## 💻 Quickstart
+## 📦 Installation & Quickstart
 
-### 1. Clone & Install
+### Option A: Install via npm (SDK & CLI)
+```bash
+npm install @spekra/agent-os
+```
+
+Import AgentOS primitives in your JavaScript / TypeScript application:
+```javascript
+import {
+  SpeculativeVerifier,
+  AgentMemoryGraph,
+  MemoryPrivacyTier,
+  AgentSelfHealer,
+  SentinelGovernor,
+  SpekraTelemetryBridge,
+  AgentOSSwarm
+} from '@spekra/agent-os';
+
+// Run speculative math & tone verifier
+const verifier = new SpeculativeVerifier();
+const audit = verifier.verifyAction({
+  id: 'act-101',
+  amountCents: 45000,
+  breakdown: [{ amountCents: 45000 }],
+  title: 'Service Payment',
+  description: 'Standard invoice reminder'
+});
+
+console.log('Verified:', audit.verified);
+```
+
+Run CLI diagnostics directly:
+```bash
+npx agentos doctor
+npx agentos fleet status
+npx agentos swarm run
+npx agentos audit --ledger
+```
+
+---
+
+### Option B: Monorepo Setup (Full Simulator & Mobile App)
+
+#### 1. Clone & Install
 ```bash
 git clone https://github.com/subash-thiruppathi/agent-os.git
 cd agent-os
 ```
 
-### 2. Start the Unified Fleet Server & Dashboard
+#### 2. Start the Unified Fleet Server & Dashboard
 ```bash
 npm start
 ```
 Open **`http://localhost:3000`** in your browser to access the live fleet control room.
 
-### 3. Launch Mobile Cockpit
+#### 3. Launch Mobile Cockpit
 ```bash
 npm run mobile
 ```
 Press `i` for iOS Simulator, `a` for Android Emulator, or scan the QR code with the Expo Go app.
 
-### 4. Run Test Suite (112/112 Tests Passing)
+#### 4. Run Test Suite (116/116 Tests Passing)
 ```bash
 npm test
 ```

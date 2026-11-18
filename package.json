@@ -1,12 +1,34 @@
 {
-  "name": "agent-os",
+  "name": "@spekra/agent-os",
   "version": "1.0.0",
-  "description": "The Autonomous Agent Operating System — Swarm Runtime, Speculative Verifiers, Zero-Trust Governance & Mobile Cockpit",
-  "main": "server.js",
+  "description": "AgentOS Autonomous Multi-Agent Swarm Runtime and Governance SDK for Spekra.in",
+  "main": "src/index.js",
   "type": "module",
   "bin": {
     "agentos": "bin/agentos.js"
   },
+  "exports": {
+    ".": "./src/index.js",
+    "./cli": "./bin/agentos.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin",
+    "src",
+    "CashHound",
+    "ResolveX",
+    "SentinelMesh",
+    "LocalRoar",
+    "PulseMD",
+    "OmniLife",
+    "Booker",
+    "Sidekick",
+    "Clerk",
+    "agent-os-mobile/src",
+    "README.md"
+  ],
   "scripts": {
     "start": "node server.js",
     "doctor": "node bin/agentos.js doctor",
@@ -19,13 +41,12 @@
   },
   "keywords": [
     "agent-os",
+    "spekra",
     "autonomous-agents",
     "swarm-intelligence",
     "zero-trust-governance",
     "speculative-verifier",
-    "mobile-agent-cockpit",
-    "fintech-agent",
-    "healthcare-ai"
+    "mobile-agent-cockpit"
   ],
   "author": "Subash Thiruppathy",
   "license": "MIT"

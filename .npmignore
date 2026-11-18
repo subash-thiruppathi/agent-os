@@ -1,0 +1,11 @@
+website/
+agent-os-mobile/android/
+agent-os-mobile/ios/
+agent-os-mobile/.expo/
+agent-os-mobile/node_modules/
+agent-os-mobile/test/
+agent-os-mobile/assets/
+test/
+.github/
+.git/
+*.log
