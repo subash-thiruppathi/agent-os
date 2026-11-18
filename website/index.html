@@ -33,13 +33,26 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Organization",
+        "@id": "https://spekra.in/#organization",
+        "name": "Spekra",
+        "url": "https://spekra.in/",
+        "logo": "https://spekra.in/favicon.svg"
+      },
+      {
         "@type": "SoftwareApplication",
         "@id": "https://agent-os.dev/#software",
         "name": "AgentOS",
+        "creator": {
+          "@id": "https://spekra.in/#organization"
+        },
+        "publisher": {
+          "@id": "https://spekra.in/#organization"
+        },
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Linux, macOS, iOS, Android, Cloudflare",
         "url": "https://agent-os.dev/",
-        "description": "Production-grade autonomous agent operating system featuring speculative verifiers, cross-agent memory graph, and zero-trust mobile governance."
+        "description": "Production-grade autonomous agent operating system under the Spekra platform ecosystem featuring speculative verifiers, cross-agent memory graph, and zero-trust mobile governance."
       },
       {
         "@type": "FAQPage",
@@ -51,6 +64,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "AgentOS provides an outcome-driven production runtime: speculative action verifiers ensure minor-unit penny exact math and FDCPA compliance before execution; privacy-partitioned memory graphs guarantee healthcare data never leaks to commercial bots; and hardware FaceID gates provide cryptographic human authorization."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does AgentOS relate to Spekra (spekra.in)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AgentOS is engineered under the Spekra.in ecosystem, bringing Spekra's high-reliability operational observability, zero-trust cryptographic governance, and autonomous multi-agent execution together."
             }
           },
           {
@@ -81,9 +102,9 @@
 
   <!-- 1. Top Announcement Bar -->
   <div class="top-banner">
-    <span class="top-banner-pill">⚡ V1.0 RELEASE</span>
-    <span>AgentOS is live: 7 autonomous production agents with zero-trust governance &amp; mobile cockpit.</span>
-    <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener" class="top-banner-link">View GitHub Repository &rarr;</a>
+    <span class="top-banner-pill">⚡ A SPEKRA PRODUCT</span>
+    <span>AgentOS is an autonomous intelligence platform under <strong><a href="https://spekra.in" target="_blank" rel="noopener" style="text-decoration: underline; color: #fff;">Spekra.in</a></strong> — 7 production agents with zero-trust governance.</span>
+    <a href="https://spekra.in" target="_blank" rel="noopener" class="top-banner-link">Visit Spekra.in &nearr;</a>
   </div>
 
   <!-- 2. Sticky Navigation Header -->
@@ -91,7 +112,10 @@
     <div class="container nav-wrapper">
       <a href="#" class="brand">
         <div class="logo-badge">⚡</div>
-        <span>AgentOS</span>
+        <div style="display: flex; flex-direction: column;">
+          <span>AgentOS</span>
+          <span style="font-size: 0.65rem; color: var(--secondary); font-weight: 700; letter-spacing: 0.5px;">BY SPEKRA.IN</span>
+        </div>
       </a>
 
       <nav class="nav-links">
@@ -100,6 +124,7 @@
         <a href="#agents" class="nav-link">Agents Fleet</a>
         <a href="#calculator" class="nav-link">ROI Calculator</a>
         <a href="#faq" class="nav-link">FAQ</a>
+        <a href="https://spekra.in" target="_blank" rel="noopener" class="nav-link" style="color: #38bdf8; font-weight: 700;">Spekra.in &nearr;</a>
         <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener" class="btn-github">
           <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
@@ -114,7 +139,7 @@
   <section class="hero">
     <div class="container">
       <div class="hero-badge">
-        <span>⚡ THE AUTONOMOUS AGENT RUNTIME</span>
+        <span>⚡ A SPEKRA INTELLIGENCE PLATFORM · <a href="https://spekra.in" target="_blank" rel="noopener" style="color: #38bdf8; text-decoration: underline;">SPEKRA.IN</a></span>
       </div>
 
       <h1>
@@ -969,16 +994,20 @@
       <div class="footer-top">
         <div class="brand">
           <div class="logo-badge">⚡</div>
-          <span>AgentOS</span>
+          <div style="display: flex; flex-direction: column;">
+            <span>AgentOS</span>
+            <span style="font-size: 0.65rem; color: var(--secondary); font-weight: 700; letter-spacing: 0.5px;">AN AUTONOMOUS PRODUCT BY SPEKRA.IN</span>
+          </div>
         </div>
         <div class="footer-links">
+          <a href="https://spekra.in" target="_blank" rel="noopener" style="color: #38bdf8; font-weight: 700;">Spekra.in Main Platform &nearr;</a>
           <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener">GitHub Monorepo</a>
           <a href="mailto:subashthiruppathy@gmail.com">Contact Support</a>
           <a href="https://github.com/subash-thiruppathi/agent-os/blob/main/README.md" target="_blank" rel="noopener">Documentation</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 AgentOS · Created by Subash Thiruppathy · MIT Licensed · Production Agentic Runtime</p>
+        <p>&copy; 2026 AgentOS · Product of <a href="https://spekra.in" target="_blank" rel="noopener" style="color: #38bdf8; text-decoration: underline; font-weight: 700;">Spekra.in</a> · Developed by Subash Thiruppathy · MIT Licensed · Production Agentic Runtime</p>
       </div>
     </div>
   </footer>

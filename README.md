@@ -1,12 +1,13 @@
 # ⚡ AgentOS — The Autonomous Agent Operating System
 
+[![Spekra Product](https://img.shields.io/badge/Product%20of-Spekra.in-38BDF8.svg)](https://spekra.in)
 [![CI Status](https://github.com/subash-thiruppathi/agent-os/actions/workflows/ci.yml/badge.svg)](https://github.com/subash-thiruppathi/agent-os/actions)
 [![Tests Passing](https://img.shields.io/badge/Tests-103%2F103%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
 [![Node Version](https://img.shields.io/badge/Node-%3E%3D20.0.0-3B82F6.svg)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Zero-Trust](https://img.shields.io/badge/Security-Zero--Trust%20Sandboxed-8B5CF6.svg)](https://github.com/subash-thiruppathi/agent-os)
 
-**AgentOS** is an outcome-driven, production-grade operating system for autonomous AI agents. It combines a zero-trust governance fabric, speculative action verifiers, cross-agent memory graphs, auto-healing execution rails, and a native mobile command cockpit for real-time human oversight.
+**AgentOS** is an outcome-driven, production-grade operating system for autonomous AI agents, engineered under the **[Spekra](https://spekra.in)** autonomous intelligence and operational reliability ecosystem. It combines a zero-trust governance fabric, speculative action verifiers, cross-agent memory graphs, auto-healing execution rails, and a native mobile command cockpit for real-time human oversight.
 
 ---
 
