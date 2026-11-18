@@ -524,6 +524,61 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
+  // 7.5 Live Server-Sent Events (SSE) Telemetry Stream
+  // =========================================================================
+  const liveSseConsole = document.getElementById('liveSseConsole');
+  const sseStreamStatus = document.getElementById('sseStreamStatus');
+
+  if (window.EventSource && liveSseConsole) {
+    try {
+      const evtSource = new EventSource('/api/fleet/stream');
+
+      evtSource.onopen = () => {
+        if (sseStreamStatus) {
+          sseStreamStatus.textContent = '● SSE CONNECTED (LIVE)';
+          sseStreamStatus.style.color = '#10B981';
+        }
+      };
+
+      evtSource.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          const time = new Date().toLocaleTimeString();
+          let lineHtml = '';
+
+          if (data.type === 'CONNECTED') {
+            lineHtml = `<span style="color: #38bdf8;">[${time}] ${data.message}</span>`;
+          } else if (data.type === 'SPAN_STARTED') {
+            lineHtml = `<span style="color: #818cf8;">[${time}] SPAN_STARTED &rarr; name=${data.span.name} agent=${data.span.agentName} (traceId: ${data.span.traceId.slice(0, 10)}...)</span>`;
+          } else if (data.type === 'SPAN_COMPLETED') {
+            lineHtml = `<span style="color: #10b981;">[${time}] SPAN_COMPLETED &check; name=${data.span.name} duration=${data.span.durationMs}ms status=${data.span.status}</span>`;
+          } else if (data.type === 'INCIDENT_ALERT') {
+            lineHtml = `<span style="color: #ef4444; font-weight: 700;">[${time}] 🚨 INCIDENT_ALERT &rarr; ${data.alert.alertId} (${data.alert.faultSignature}): ${data.alert.message}</span>`;
+          } else if (data.type === 'LEDGER_MIRRORED') {
+            lineHtml = `<span style="color: #f59e0b;">[${time}] 📜 LEDGER_MIRRORED &rarr; Block #${data.record.blockIndex} SHA-256=${data.record.hash.slice(0, 12)}... SpekraProofVerified</span>`;
+          }
+
+          if (lineHtml) {
+            liveSseConsole.innerHTML += `<br>${lineHtml}`;
+            liveSseConsole.scrollTop = liveSseConsole.scrollHeight;
+          }
+        } catch {
+          // non-JSON message
+        }
+      };
+
+      evtSource.onerror = () => {
+        if (sseStreamStatus) {
+          sseStreamStatus.textContent = '○ DISCONNECTED (RECONNECTING...)';
+          sseStreamStatus.style.color = '#94A3B8';
+        }
+      };
+    } catch {
+      // EventSource failed or static hosting mode
+    }
+  }
+
+  // =========================================================================
   // 8. FAQ Accordion
   // =========================================================================
   const faqItems = document.querySelectorAll('.faq-item');

@@ -2,7 +2,7 @@
 
 [![Spekra Product](https://img.shields.io/badge/Product%20of-Spekra.in-38BDF8.svg)](https://spekra.in)
 [![CI Status](https://github.com/subash-thiruppathi/agent-os/actions/workflows/ci.yml/badge.svg)](https://github.com/subash-thiruppathi/agent-os/actions)
-[![Tests Passing](https://img.shields.io/badge/Tests-107%2F107%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
+[![Tests Passing](https://img.shields.io/badge/Tests-112%2F112%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
 [![Node Version](https://img.shields.io/badge/Node-%3E%3D20.0.0-3B82F6.svg)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Zero-Trust](https://img.shields.io/badge/Security-Zero--Trust%20Sandboxed-8B5CF6.svg)](https://github.com/subash-thiruppathi/agent-os)
@@ -105,9 +105,25 @@ npm run mobile
 ```
 Press `i` for iOS Simulator, `a` for Android Emulator, or scan the QR code with the Expo Go app.
 
-### 4. Run Test Suite (98/98 Tests Passing)
+### 4. Run Test Suite (112/112 Tests Passing)
 ```bash
 npm test
+```
+
+### 5. Developer CLI Commands (`agentos`)
+Audit systems, inspect fleets, and run swarms natively in your terminal or CI/CD pipelines:
+```bash
+# Run 5-point diagnostic health audit across all 7 agents & Spekra bridge
+npx agentos doctor
+
+# Inspect live status, authority ceilings, and approvals
+npx agentos fleet status
+
+# Execute the 5-stage sequential autonomous swarm pipeline
+npx agentos swarm run
+
+# Cryptographically verify SHA-256 block ledger immutability
+npx agentos audit --ledger
 ```
 
 ---
