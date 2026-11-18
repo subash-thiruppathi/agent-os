@@ -1,0 +1,11 @@
+{
+  "name": "clerk-agent",
+  "version": "0.1.0",
+  "description": "Clerk - Settlement & Warranty Resolution Agent for Field Services",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test"
+  }
+}

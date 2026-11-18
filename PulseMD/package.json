@@ -1,0 +1,13 @@
+{
+  "name": "pulsemd-agent",
+  "version": "0.1.0",
+  "description": "PulseMD - Autonomous Clinical Operations, Charting & Prior-Auth Agent",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

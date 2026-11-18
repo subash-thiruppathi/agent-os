@@ -1,0 +1,11 @@
+{
+  "name": "sidekick-agent",
+  "version": "0.1.0",
+  "description": "Sidekick - Field Job Completion Companion for Service Technicians",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test"
+  }
+}

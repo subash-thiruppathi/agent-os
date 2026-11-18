@@ -1,0 +1,25 @@
+{
+  "name": "agent-os",
+  "version": "1.0.0",
+  "description": "The Autonomous Agent Operating System — Swarm Runtime, Speculative Verifiers, Zero-Trust Governance & Mobile Cockpit",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test agent-os-mobile/test/*.test.js CashHound/test/**/*.test.js ResolveX/test/*.test.js SentinelMesh/test/*.test.js LocalRoar/test/*.test.js PulseMD/test/*.test.js OmniLife/test/*.test.js Booker/test/*.test.js Sidekick/test/*.test.js Clerk/test/*.test.js",
+    "test:all": "for dir in agent-os-mobile CashHound ResolveX SentinelMesh LocalRoar PulseMD OmniLife Booker Sidekick Clerk; do (cd \"$dir\" && npm test); done",
+    "mobile": "cd agent-os-mobile && npm start"
+  },
+  "keywords": [
+    "agent-os",
+    "autonomous-agents",
+    "swarm-intelligence",
+    "zero-trust-governance",
+    "speculative-verifier",
+    "mobile-agent-cockpit",
+    "fintech-agent",
+    "healthcare-ai"
+  ],
+  "author": "Subash Thiruppathy",
+  "license": "MIT"
+}

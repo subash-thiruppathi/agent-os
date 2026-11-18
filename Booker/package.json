@@ -1,0 +1,11 @@
+{
+  "name": "booker-agent",
+  "version": "0.1.0",
+  "description": "Booker - Intake & Dispatch Agent for Service Workflows",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test"
+  }
+}

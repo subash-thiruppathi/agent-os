@@ -1,0 +1,13 @@
+{
+  "name": "omnilife-agent",
+  "version": "0.1.0",
+  "description": "OmniLife - Autonomous Life Operating System Agent",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}

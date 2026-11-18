@@ -1,0 +1,21 @@
+{
+  "name": "cashhound",
+  "version": "1.0.0",
+  "description": "Autonomous SMB Revenue Recovery Agent - accounts receivable recovery, intelligent dunning, and risk-managed approval workflows",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/**/*.test.js"
+  },
+  "keywords": [
+    "revenue-recovery",
+    "accounts-receivable",
+    "dunning",
+    "agentic-ai",
+    "smb",
+    "cashflow",
+    "invoicing"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}

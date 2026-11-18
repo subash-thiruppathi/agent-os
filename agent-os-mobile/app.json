@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "AgentOS Mobile",
+    "slug": "agent-os-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#090D16",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.agentos.mobile"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#090D16"
+      },
+      "package": "com.agentos.mobile"
+    }
+  }
+}

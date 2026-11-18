@@ -1,0 +1,20 @@
+{
+  "name": "resolvex",
+  "version": "1.0.0",
+  "description": "Autonomous Customer Resolution Agent with progressive autonomy, policy engine, and human-in-the-loop escalation",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "agentic-ai",
+    "customer-resolution",
+    "policy-engine",
+    "human-in-the-loop",
+    "autonomous-agent",
+    "support-automation"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}
