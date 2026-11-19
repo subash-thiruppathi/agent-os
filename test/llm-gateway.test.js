@@ -4,13 +4,13 @@ import { AgentOSLLMGateway } from '../src/llm-gateway.js';
 
 test('AgentOSLLMGateway Test Suite', async (t) => {
   await t.test('initializes cleanly in offline/deterministic mode', () => {
-    const gateway = new AgentOSLLMGateway();
+    const gateway = new AgentOSLLMGateway({ apiKey: null, model: 'gemini-3.5-flash' });
     assert.equal(gateway.isConfigured, false);
-    assert.equal(gateway.model, 'gemini-2.5-flash');
+    assert.equal(gateway.model, 'gemini-3.5-flash');
   });
 
   await t.test('generates valid FDCPA-compliant dunning notices and verifies action', async () => {
-    const gateway = new AgentOSLLMGateway();
+    const gateway = new AgentOSLLMGateway({ apiKey: null });
     const result = await gateway.generateDunningNotice({
       invoiceId: 'INV-8890',
       customerName: 'Acme Logistics',
@@ -30,7 +30,7 @@ test('AgentOSLLMGateway Test Suite', async (t) => {
 
   await t.test('calls custom mock Gemini fetcher and verifies response', async () => {
     const mockFetch = async (url, opts) => {
-      assert.ok(url.includes('gemini-2.5-flash'));
+      assert.ok(url.includes('gemini-3.5-flash'));
       assert.equal(opts.method, 'POST');
       return {
         ok: true,
@@ -46,6 +46,7 @@ test('AgentOSLLMGateway Test Suite', async (t) => {
 
     const gateway = new AgentOSLLMGateway({
       apiKey: 'test-gemini-key',
+      model: 'gemini-3.5-flash',
       fetch: mockFetch
     });
 
@@ -60,7 +61,7 @@ test('AgentOSLLMGateway Test Suite', async (t) => {
     });
 
     assert.equal(result.success, true);
-    assert.equal(result.provider, 'gemini (gemini-2.5-flash)');
+    assert.equal(result.provider, 'gemini (gemini-3.5-flash)');
     assert.ok(result.text.includes('Dear Alpha Corp'));
     assert.equal(result.audit.verified, true);
   });

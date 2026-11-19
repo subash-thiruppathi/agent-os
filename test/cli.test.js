@@ -41,7 +41,7 @@ test('CLI: agentos ai status tests LLM gateway and speculative guardrail', async
   const { code, stdout } = await runCli(['ai']);
   assert.equal(code, 0);
   assert.ok(stdout.includes('AgentOS LLM Gateway & Gemini Engine Status'));
-  assert.ok(stdout.includes('gemini-2.5-flash'));
+  assert.ok(stdout.includes('gemini-3.5-flash'));
   assert.ok(stdout.includes('PASSED'));
 });
 

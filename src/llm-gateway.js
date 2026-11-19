@@ -45,7 +45,7 @@ tryLoadEnv();
 
 export class AgentOSLLMGateway {
   constructor(options = {}) {
-    this.apiKey = options.apiKey || process.env.GEMINI_API_KEY || null;
+    this.apiKey = options.apiKey !== undefined ? options.apiKey : (process.env.GEMINI_API_KEY || null);
     this.model = options.model || process.env.GEMINI_MODEL || 'gemini-3.5-flash';
     this.apiBaseUrl = options.apiBaseUrl || 'https://generativelanguage.googleapis.com/v1beta/models';
     this.verifier = options.verifier || new SpeculativeVerifier();
