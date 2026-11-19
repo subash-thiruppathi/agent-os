@@ -9,13 +9,19 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { SpeculativeVerifier } from '../agent-os-mobile/src/speculative-verifier.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function tryLoadEnv() {
   if (process.env.GEMINI_API_KEY) return;
   const candidates = [
     path.resolve(process.cwd(), '.env'),
-    path.resolve(process.cwd(), '../.env')
+    path.resolve(process.cwd(), 'agent-os/.env'),
+    path.resolve(__dirname, '../.env'),
+    path.resolve(__dirname, '../../.env')
   ];
   for (const envPath of candidates) {
     if (fs.existsSync(envPath)) {
@@ -40,7 +46,7 @@ tryLoadEnv();
 export class AgentOSLLMGateway {
   constructor(options = {}) {
     this.apiKey = options.apiKey || process.env.GEMINI_API_KEY || null;
-    this.model = options.model || 'gemini-2.5-flash';
+    this.model = options.model || process.env.GEMINI_MODEL || 'gemini-3.5-flash';
     this.apiBaseUrl = options.apiBaseUrl || 'https://generativelanguage.googleapis.com/v1beta/models';
     this.verifier = options.verifier || new SpeculativeVerifier();
     this.customFetch = options.fetch || (typeof fetch !== 'undefined' ? fetch : null);
