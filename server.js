@@ -360,7 +360,17 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
+  if (pathname === '/docs' || pathname === '/docs/') {
+    const docsPath = path.join(WEBSITE_DIR, 'docs', 'index.html');
+    if (fs.existsSync(docsPath)) {
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(fs.readFileSync(docsPath));
+      return;
+    }
+  }
+
   const staticExts = {
+    '.html': 'text/html; charset=utf-8',
     '.css': 'text/css; charset=utf-8',
     '.js': 'application/javascript; charset=utf-8',
     '.svg': 'image/svg+xml',

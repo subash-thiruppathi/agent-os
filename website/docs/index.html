@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation & SDK Reference — AgentOS by Spekra.in</title>
+  <meta name="description" content="Complete SDK and API documentation for AgentOS (@spekra.in/agent-os). Integrate autonomous swarm agents, speculative verifiers, zero-trust governance, and Gemini AI.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    :root {
+      --sidebar-width: 280px;
+    }
+    body {
+      background: #080c17;
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .docs-layout {
+      display: flex;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding-top: 60px;
+      min-height: calc(100vh - 60px);
+    }
+    .docs-sidebar {
+      width: var(--sidebar-width);
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: 32px 20px 48px;
+      border-right: 1px solid var(--border-color);
+      flex-shrink: 0;
+    }
+    .docs-nav-group {
+      margin-bottom: 24px;
+    }
+    .docs-nav-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .docs-nav-link {
+      display: block;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-bottom: 2px;
+    }
+    .docs-nav-link:hover, .docs-nav-link.active {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.08);
+      font-weight: 600;
+    }
+    .docs-content {
+      flex: 1;
+      padding: 40px 60px 80px;
+      max-width: 960px;
+    }
+    .docs-content h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .docs-content h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      scroll-margin-top: 80px;
+    }
+    .docs-content h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      color: #e2e8f0;
+      scroll-margin-top: 80px;
+    }
+    .docs-content p, .docs-content li {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+    .code-block-wrapper {
+      position: relative;
+      margin: 20px 0;
+      background: #0d1424;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .code-block-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+    .code-block-wrapper pre {
+      margin: 0;
+      padding: 16px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #f8fafc;
+    }
+    .btn-copy-code {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-copy-code:hover {
+      background: #38bdf8;
+      color: #080c17;
+      border-color: #38bdf8;
+    }
+    .badge-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+    .badge-pill.cyan { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+    .badge-pill.green { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+    .badge-pill.purple { background: rgba(139, 92, 246, 0.2); color: #c084fc; }
+
+    @media (max-width: 900px) {
+      .docs-layout { flex-direction: column; }
+      .docs-sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .docs-content { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-banner">
+    <span class="top-banner-pill">⚡ A SPEKRA PRODUCT</span>
+    <span>AgentOS is an autonomous intelligence platform under <strong><a href="https://spekra.in" target="_blank" rel="noopener" style="text-decoration: underline; color: #fff;">Spekra.in</a></strong>.</span>
+    <a href="/" class="top-banner-link">&larr; Back to Live Simulator</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand">
+        <div class="logo-badge">⚡</div>
+        <div style="display: flex; flex-direction: column;">
+          <span>AgentOS</span>
+          <span style="font-size: 0.65rem; color: var(--secondary); font-weight: 700; letter-spacing: 0.5px;">DOCUMENTATION</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="/" class="nav-link">Live Simulator</a>
+        <a href="/docs" class="nav-link active" style="color: #38bdf8; font-weight: 700;">Documentation</a>
+        <a href="https://www.npmjs.com/package/@spekra.in/agent-os" target="_blank" rel="noopener" class="nav-link">npm package &nearr;</a>
+        <a href="https://github.com/subash-thiruppathi/agent-os" target="_blank" rel="noopener" class="btn-github">
+          <span>GitHub</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <!-- Sidebar -->
+    <aside class="docs-sidebar">
+      <div class="docs-nav-group">
+        <div class="docs-nav-title">Getting Started</div>
+        <a href="#overview" class="docs-nav-link active">Overview</a>
+        <a href="#installation" class="docs-nav-link">Installation</a>
+        <a href="#quickstart" class="docs-nav-link">Quickstart</a>
+      </div>
+
+      <div class="docs-nav-group">
+        <div class="docs-nav-title">Core SDK Engines</div>
+        <a href="#gemini-gateway" class="docs-nav-link">Gemini AI Gateway</a>
+        <a href="#speculative-verifier" class="docs-nav-link">Speculative Verifier</a>
+        <a href="#memory-graph" class="docs-nav-link">Agent Memory Graph</a>
+        <a href="#sentinel-governor" class="docs-nav-link">Sentinel Governor</a>
+        <a href="#self-healer" class="docs-nav-link">Self-Healing Rails</a>
+        <a href="#swarm-orchestrator" class="docs-nav-link">Swarm Orchestrator</a>
+        <a href="#biometric-voice" class="docs-nav-link">Mobile & Voice Cockpit</a>
+      </div>
+
+      <div class="docs-nav-group">
+        <div class="docs-nav-title">Domain Agents</div>
+        <a href="#agents-cashhound" class="docs-nav-link">CashHound (Fintech)</a>
+        <a href="#agents-resolvex" class="docs-nav-link">ResolveX (Disputes)</a>
+        <a href="#agents-pulsemd" class="docs-nav-link">PulseMD (Clinical)</a>
+        <a href="#agents-localroar" class="docs-nav-link">LocalRoar (Growth)</a>
+        <a href="#agents-omnilife" class="docs-nav-link">OmniLife (Sovereign)</a>
+      </div>
+
+      <div class="docs-nav-group">
+        <div class="docs-nav-title">Tools & Protocols</div>
+        <a href="#cli-reference" class="docs-nav-link">Developer CLI (agentos)</a>
+        <a href="#rest-api" class="docs-nav-link">REST & Telemetry API</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="docs-content">
+      <h1 id="overview">AgentOS Developer Documentation</h1>
+      <p>
+        <strong>AgentOS</strong> is an outcome-driven, production-grade operating system for autonomous AI agents, published under the official scope <strong><code>@spekra.in/agent-os</code></strong>.
+        It combines zero-trust governance, speculative action verifiers, cross-agent memory graphs, auto-healing execution rails, and live Gemini AI integration.
+      </p>
+
+      <!-- 1. Installation -->
+      <h2 id="installation">1. Installation</h2>
+      <p>Install the official runtime SDK and CLI tools from npm:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span>bash</span>
+          <button class="btn-copy-code" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>npm install @spekra.in/agent-os</code></pre>
+      </div>
+
+      <!-- 2. Quickstart -->
+      <h2 id="quickstart">2. Quickstart</h2>
+      <p>Import core engines directly in your Node.js application (ES Modules):</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span>javascript</span>
+          <button class="btn-copy-code" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>import {
+  SpeculativeVerifier,
+  AgentOSLLMGateway,
+  AgentMemoryGraph,
+  SentinelGovernor,
+  AgentOSSwarm
+} from '@spekra.in/agent-os';
+
+// 1. Audit high-value transactions with SpeculativeVerifier
+const verifier = new SpeculativeVerifier();
+const audit = verifier.verifyAction({
+  id: 'act-101',
+  amountCents: 45000,
+  breakdown: [{ amountCents: 45000 }],
+  title: 'Service Remittance',
+  description: 'Friendly invoice reminder'
+});
+
+console.log('Action Approved:', audit.verified); // true
+console.log('Policy Score:', audit.policyAlignmentScore); // 100</code></pre>
+      </div>
+
+      <!-- 3. Gemini AI Gateway -->
+      <h2 id="gemini-gateway">3. Gemini AI Gateway <span class="badge-pill cyan">gemini-2.5-flash</span></h2>
+      <p>
+        The <code>AgentOSLLMGateway</code> integrates Google Gemini models with mandatory pre-flight speculative verification. If Gemini hallucinates or uses coercive language, the verifier intercepts the action before execution.
+      </p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span>javascript</span>
+          <button class="btn-copy-code" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>import { AgentOSLLMGateway } from '@spekra.in/agent-os';
+
+// Automatically reads process.env.GEMINI_API_KEY
+const gateway = new AgentOSLLMGateway({
+  model: 'gemini-2.5-flash'
+});
+
+// Generates empathetic, FDCPA-compliant dunning notice
+const result = await gateway.generateDunningNotice({
+  invoiceId: 'INV-2026',
+  customerName: 'Acme Logistics',
+  amountCents: 84000,
+  daysPastDue: 35,
+  tone: 'professional',
+  discountPercent: 10
+});
+
+console.log('Provider:', result.provider);
+console.log('Verified:', result.audit.verified);
+console.log('Message:', result.text);</code></pre>
+      </div>
+
+      <!-- 4. Speculative Verifier -->
+      <h2 id="speculative-verifier">4. Speculative Verifier ("Second Pair of Eyes")</h2>
+      <p>
+        Every proposed agent action is audited prior to human presentation or automated execution.
+      </p>
+      <ul>
+        <li><strong>Integer Math Check:</strong> Ensures <code>breakdown.reduce(sum) === amountCents</code> without floating point drift.</li>
+        <li><strong>Regulatory Coercion Filter:</strong> Blocks illegal threats under debt collection law (e.g. <code>/police|arrest|jail|seize property/i</code>).</li>
+        <li><strong>Dual-Control Threshold:</strong> Actions exceeding $10,000 (1,000,000 cents) automatically require secondary executive approval.</li>
+      </ul>
+
+      <!-- 5. Cross-Agent Memory Graph -->
+      <h2 id="memory-graph">5. Cross-Agent Memory Graph <span class="badge-pill green">Zero-Leak Fabric</span></h2>
+      <p>
+        Guarantees that sensitive facts cannot leak across agent boundaries through cryptographic privacy tiers:
+      </p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span>javascript</span>
+          <button class="btn-copy-code" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>import { AgentMemoryGraph, MemoryPrivacyTier } from '@spekra.in/agent-os';
+
+const graph = new AgentMemoryGraph();
+
+// Record medical observation with RESTRICTED_PHI tier
+graph.recordFact({
+  entityId: 'patient-409',
+  factKey: 'diagnosis_code',
+  factValue: 'M25.561',
+  sourceAgent: 'pulsemd',
+  privacyTier: MemoryPrivacyTier.RESTRICTED_PHI
+});
+
+// Commercial bot attempt to query patient memory -> returns []
+const leakCheck = graph.queryMemories('patient-409', 'cashhound');
+console.log('Commercial Bot Access:', leakCheck.length); // 0 (BLOCKED)</code></pre>
+      </div>
+
+      <!-- 6. Sentinel Governor -->
+      <h2 id="sentinel-governor">6. Zero-Trust Sentinel Governor</h2>
+      <p>
+        Enforces least-privilege role-based access control (RBAC), autonomous spending caps, and maintains a tamper-evident SHA-256 cryptographic ledger.
+      </p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span>javascript</span>
+          <button class="btn-copy-code" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>import { SentinelGovernor, PermissionScope } from '@spekra.in/agent-os';
+
+const sentinel = new SentinelGovernor();
+
+// Register agent with strict spending ceiling
+sentinel.registerAgent('bot-alpha', [
+  PermissionScope.READ_DATA,
+  PermissionScope.FINANCIAL_TRANSACTION
+], 5000); // Max $50.00 autonomous transactions
+
+// Check cryptographic audit ledger integrity
+const isImmutable = sentinel.sandbox.verifyLedgerIntegrity();
+console.log('Ledger Verified:', isImmutable); // true</code></pre>
+      </div>
+
+      <!-- 7. CLI Reference -->
+      <h2 id="cli-reference">7. Developer CLI Reference (<code>agentos</code>)</h2>
+      <p>AgentOS includes an enterprise CLI executable via <code>npx agentos</code>:</p>
+      <div class="code-block-wrapper">
+        <div class="code-block-header">
+          <span>bash</span>
+          <button class="btn-copy-code" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code># 1. Run 6-point system diagnostic health audit
+npx agentos doctor
+
+# 2. Inspect live fleet status table
+npx agentos fleet status
+
+# 3. Test Gemini LLM gateway & speculative guardrail
+npx agentos ai status
+
+# 4. Execute 5-stage sequential autonomous swarm
+npx agentos swarm run
+
+# 5. Verify cryptographic SHA-256 block ledger integrity
+npx agentos audit --ledger</code></pre>
+      </div>
+
+      <!-- 8. REST API Reference -->
+      <h2 id="rest-api">8. REST API Reference</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--border-color); text-align: left;">
+            <th style="padding: 10px;">Method</th>
+            <th style="padding: 10px;">Endpoint</th>
+            <th style="padding: 10px;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 10px;"><code>GET</code></td>
+            <td style="padding: 10px;"><code>/api/status</code></td>
+            <td style="padding: 10px;">Returns real-time health and pending approvals for all agents.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 10px;"><code>GET</code></td>
+            <td style="padding: 10px;"><code>/api/fleet/stream</code></td>
+            <td style="padding: 10px;">Server-Sent Events (SSE) telemetry stream to Spekra cloud and mobile cockpit.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 10px;"><code>GET</code></td>
+            <td style="padding: 10px;"><code>/api/ai/status</code></td>
+            <td style="padding: 10px;">Returns Gemini AI gateway configuration and model status.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 10px;"><code>POST</code></td>
+            <td style="padding: 10px;"><code>/api/ai/generate</code></td>
+            <td style="padding: 10px;">Generates guarded LLM payloads (dunning, clinical SOAP, dispute resolution).</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 10px;"><code>GET</code></td>
+            <td style="padding: 10px;"><code>/api/spekra/status</code></td>
+            <td style="padding: 10px;">Returns Spekra.in connectivity state, trace spans, and mirrored audit blocks.</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <script>
+    function copyCode(btn) {
+      const code = btn.closest('.code-block-wrapper').querySelector('pre code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+
+    // Scrollspy for active nav link
+    const links = document.querySelectorAll('.docs-nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      document.querySelectorAll('h1, h2').forEach(heading => {
+        const top = heading.getBoundingClientRect().top;
+        if (top <= 120) {
+          current = heading.getAttribute('id');
+        }
+      });
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
