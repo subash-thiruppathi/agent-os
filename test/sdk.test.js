@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  AgentOSLLMGateway,
   SpeculativeVerifier,
   AgentMemoryGraph,
   MemoryPrivacyTier,
@@ -28,6 +29,7 @@ import {
 
 test('@spekra.in/agent-os SDK Root Exports', async (t) => {
   await t.test('Core Engine Classes & Enums', () => {
+    assert.ok(typeof AgentOSLLMGateway === 'function');
     assert.ok(typeof SpeculativeVerifier === 'function');
     assert.ok(typeof AgentMemoryGraph === 'function');
     assert.equal(MemoryPrivacyTier.RESTRICTED_PHI, 'RESTRICTED_PHI');

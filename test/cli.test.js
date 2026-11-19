@@ -28,12 +28,21 @@ test('CLI: agentos --help outputs command documentation', async () => {
   assert.ok(stdout.includes('fleet status'));
 });
 
-test('CLI: agentos doctor passes all 5 core health checks', async () => {
+test('CLI: agentos doctor passes all 6 core health checks', async () => {
   const { code, stdout } = await runCli(['doctor']);
   assert.equal(code, 0);
-  assert.ok(stdout.includes('All 5 Core Systems PASSED'));
+  assert.ok(stdout.includes('All 6 Core Systems PASSED'));
   assert.ok(stdout.includes('MemoryGraph HIPAA Privacy Isolation'));
   assert.ok(stdout.includes('SpeculativeVerifier Math & FDCPA Tone Guard'));
+  assert.ok(stdout.includes('AgentOSLLMGateway & Gemini Engine'));
+});
+
+test('CLI: agentos ai status tests LLM gateway and speculative guardrail', async () => {
+  const { code, stdout } = await runCli(['ai']);
+  assert.equal(code, 0);
+  assert.ok(stdout.includes('AgentOS LLM Gateway & Gemini Engine Status'));
+  assert.ok(stdout.includes('gemini-2.5-flash'));
+  assert.ok(stdout.includes('PASSED'));
 });
 
 test('CLI: agentos fleet status renders active table', async () => {

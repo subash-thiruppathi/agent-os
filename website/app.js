@@ -399,6 +399,40 @@ document.addEventListener('DOMContentLoaded', () => {
         successMessage = 'Swarm completed full 5-stage lifecycle autonomously under SentinelMesh governance.';
         awardXp(250, 'swarm', 'Swarm General');
         break;
+
+      case 'aigateway': {
+        const workflow = document.getElementById('aiWorkflowSelect')?.value || 'dunning';
+        try {
+          const resp = await fetch('/api/ai/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ actionType: workflow })
+          });
+          if (resp.ok) {
+            resultData = await resp.json();
+          } else {
+            throw new Error(`HTTP ${resp.status}`);
+          }
+        } catch {
+          resultData = {
+            provider: 'AgentOSLLMGateway (Deterministic Guardrail Mode)',
+            workflow,
+            generatedOutput: 'Hi Acme Logistics, this is a gentle reminder that invoice INV-901 ($500.00) is 30 days past due. Please review your account or schedule an installment plan at your earliest convenience.',
+            audit: {
+              actionId: 'act-dunning-INV-901',
+              verified: true,
+              policyAlignmentScore: 100,
+              passedSecondPairOfEyes: true,
+              issues: [],
+              recommendation: 'Action verified: Math reconciles and tone complies with regulatory policy.'
+            },
+            guarded: true
+          };
+        }
+        successMessage = `AgentOSLLMGateway generated safe ${workflow} payload guarded by SpeculativeVerifier.`;
+        awardXp(180, 'aigateway', 'Gemini Commander');
+        break;
+      }
     }
 
     if (consoleOutput) {

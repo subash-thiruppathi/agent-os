@@ -191,7 +191,7 @@
       <!-- Live Fleet Status Pill -->
       <div class="status-bar-wrapper">
         <div class="pulse-dot"></div>
-        <span>ALL 7 AGENTS ONLINE · 116/116 TESTS PASSING · NPM @SPEKRA.IN/AGENT-OS READY · SPEKRA CLOUD TELEMETRY LIVE</span>
+        <span>ALL 7 AGENTS ONLINE · 124/124 TESTS PASSING · GEMINI 2.5 AI GATEWAY LIVE · NPM @SPEKRA.IN/AGENT-OS · SPEKRA CLOUD TELEMETRY</span>
       </div>
     </div>
   </section>
@@ -215,6 +215,7 @@
           <button class="sim-tab-btn" data-target="panel-pulsemd">🩺 PulseMD</button>
           <button class="sim-tab-btn" data-target="panel-omnilife">🌐 OmniLife</button>
           <button class="sim-tab-btn" data-target="panel-swarm">🐝 5-Stage Swarm</button>
+          <button class="sim-tab-btn" data-target="panel-aigateway">🧠 Gemini Gateway</button>
         </div>
 
         <!-- Panel 1: CashHound -->
@@ -457,6 +458,49 @@
               </div>
               <div class="sim-result-data" id="sim-result-swarm">
                 // Payload output will render here upon execution
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 8: Gemini Gateway -->
+        <div class="sim-panel" id="panel-aigateway">
+          <div class="sim-split">
+            <div class="sim-config">
+              <div>
+                <h3 class="sim-title">🧠 AgentOS Gemini AI Gateway &amp; Speculative Guardrail</h3>
+                <p class="sim-desc">Integrates Gemini 2.5 Flash generative intelligence with mandatory pre-flight SpeculativeVerifier audits. Generates empathy-driven dunning notices, FHIR clinical notes, or multi-modal dispute resolutions.</p>
+                <div class="sim-stats-grid">
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Model Target</div>
+                    <div class="sim-stat-value">Gemini 2.5 Flash</div>
+                  </div>
+                  <div class="sim-stat-box">
+                    <div class="sim-stat-label">Safety Guardrail</div>
+                    <div class="sim-stat-value">Zero-Trust Active</div>
+                  </div>
+                </div>
+                <div style="margin-top: 14px;">
+                  <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Select Workflow:</label>
+                  <select id="aiWorkflowSelect" style="width: 100%; padding: 8px 12px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem;">
+                    <option value="dunning">Fintech: FDCPA Settlement Notice</option>
+                    <option value="soap">Clinical: FHIR SOAP Note Extraction</option>
+                    <option value="dispute">E-Commerce: High-Value Dispute Battlecard</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn-trigger" onclick="runAgentSim('aigateway')" style="margin-top: 16px;">Generate with Speculative Guardrail</button>
+            </div>
+            <div class="sim-output-box">
+              <div class="sim-output-header">
+                <span>Guardrail Audit Stream</span>
+                <span class="status-pill pill-idle" id="sim-status-aigateway">IDLE</span>
+              </div>
+              <div class="sim-terminal" id="sim-console-aigateway">
+                [Ready] Click "Generate with Speculative Guardrail" to invoke AgentOSLLMGateway...
+              </div>
+              <div class="sim-result-data" id="sim-result-aigateway">
+                // Guarded payload and verifier score will render here
               </div>
             </div>
           </div>

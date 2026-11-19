@@ -3,7 +3,7 @@
 [![Spekra Product](https://img.shields.io/badge/Product%20of-Spekra.in-38BDF8.svg)](https://spekra.in)
 [![npm version](https://img.shields.io/badge/npm-%40spekra.in%2Fagent--os-CB3837.svg)](https://www.npmjs.com/package/@spekra.in/agent-os)
 [![CI Status](https://github.com/subash-thiruppathi/agent-os/actions/workflows/ci.yml/badge.svg)](https://github.com/subash-thiruppathi/agent-os/actions)
-[![Tests Passing](https://img.shields.io/badge/Tests-116%2F116%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
+[![Tests Passing](https://img.shields.io/badge/Tests-124%2F124%20Passing-10B981.svg)](https://github.com/subash-thiruppathi/agent-os)
 [![Node Version](https://img.shields.io/badge/Node-%3E%3D20.0.0-3B82F6.svg)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Zero-Trust](https://img.shields.io/badge/Security-Zero--Trust%20Sandboxed-8B5CF6.svg)](https://github.com/subash-thiruppathi/agent-os)
@@ -69,6 +69,11 @@ flowchart TD
 ### 6. 🎙️ Voice Cockpit Engine (`VoiceCockpit`)
 - Hands-free natural language command interpretation.
 - Parses intents, verifies authority levels, executes agent tasks, and streams synthesized audio responses.
+
+### 7. 🧠 Gemini AI Gateway & Speculative Guardrail (`AgentOSLLMGateway`)
+- Integrates Google Gemini generative intelligence (`gemini-2.5-flash`) with mandatory pre-flight `SpeculativeVerifier` audits.
+- Generates empathy-driven FDCPA-compliant dunning settlement notices, multi-speaker FHIR clinical SOAP notes, and high-value dispute resolution battlecards.
+- Operates in live Gemini mode with `GEMINI_API_KEY` or falls back seamlessly to deterministic rule-based engines.
 
 ---
 

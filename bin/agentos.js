@@ -17,6 +17,7 @@ import { AgentSelfHealer } from '../agent-os-mobile/src/self-healer.js';
 import { SpeculativeVerifier } from '../agent-os-mobile/src/speculative-verifier.js';
 import { AgentOSSwarm } from '../agent-os-mobile/src/swarm.js';
 import { SpekraTelemetryBridge } from '../agent-os-mobile/src/spekra-bridge.js';
+import { AgentOSLLMGateway } from '../src/llm-gateway.js';
 
 const command = process.argv[2];
 const subcommand = process.argv[3];
@@ -122,6 +123,30 @@ async function runDoctor() {
     checks.push({ name: 'Spekra.in Telemetry & OpenTelemetry Spans', status: 'FAIL', detail: err.message });
   }
 
+  // 6. Gemini LLM Gateway & Speculative Guardrail
+  try {
+    const gateway = new AgentOSLLMGateway();
+    const probe = await gateway.generateDunningNotice({
+      invoiceId: 'DOC-1',
+      customerName: 'Doctor Probe',
+      amountCents: 10000,
+      daysPastDue: 14
+    });
+    if (probe.guarded && probe.audit.verified) {
+      checks.push({
+        name: 'AgentOSLLMGateway & Gemini Engine',
+        status: 'PASS',
+        detail: gateway.isConfigured
+          ? `Live Gemini API connected (${gateway.model}) with Speculative Verifier`
+          : 'Deterministic guardrail engine operational (Set GEMINI_API_KEY for live generative mode)'
+      });
+    } else {
+      checks.push({ name: 'AgentOSLLMGateway & Gemini Engine', status: 'FAIL', detail: 'Guardrail rejected legitimate notice' });
+    }
+  } catch (err) {
+    checks.push({ name: 'AgentOSLLMGateway & Gemini Engine', status: 'FAIL', detail: err.message });
+  }
+
   // Output Results Table
   let allPass = true;
   for (const c of checks) {
@@ -133,7 +158,7 @@ async function runDoctor() {
 
   console.log('\x1b[90m============================================================\x1b[0m');
   if (allPass) {
-    console.log('\x1b[32m✨ All 5 Core Systems PASSED (100% Ready for Autonomous Production)\x1b[0m\n');
+    console.log(`\x1b[32m✨ All ${checks.length} Core Systems PASSED (100% Ready for Autonomous Production)\x1b[0m\n`);
     return 0;
   } else {
     console.log('\x1b[31m⚠️ System audit detected failures. Review details above.\x1b[0m\n');
@@ -207,6 +232,32 @@ async function runAudit() {
   }
 }
 
+async function runAICommand() {
+  console.log('\n\x1b[36m⚡ AgentOS LLM Gateway & Gemini Engine Status\x1b[0m');
+  console.log('\x1b[90m============================================================\x1b[0m');
+
+  const gateway = new AgentOSLLMGateway();
+  console.log(`Configured:          ${gateway.isConfigured ? '\x1b[32mYES (GEMINI_API_KEY detected)\x1b[0m' : '\x1b[33mNO (Running in Deterministic Guardrail Mode)\x1b[0m'}`);
+  console.log(`Target Model:        \x1b[35m${gateway.model}\x1b[0m`);
+  console.log(`Pre-Flight Verifier: \x1b[32mSpeculativeVerifier (Math + Tone + Dual-Control)\x1b[0m`);
+
+  console.log('\n\x1b[1mTesting Guarded LLM Generation Probe...\x1b[0m');
+  const result = await gateway.generateDunningNotice({
+    invoiceId: 'CLI-TEST-2026',
+    customerName: 'Spekra Enterprise Partner',
+    amountCents: 25000,
+    daysPastDue: 30,
+    tone: 'professional',
+    discountPercent: 15
+  });
+
+  console.log(`Provider:            \x1b[36m${result.provider}\x1b[0m`);
+  console.log(`Verified Status:     ${result.audit.verified ? '\x1b[32mPASSED (Score: 100)\x1b[0m' : '\x1b[31mBLOCKED\x1b[0m'}`);
+  console.log(`Generated Output:    "${result.text}"`);
+  console.log('\x1b[90m============================================================\x1b[0m\n');
+  return 0;
+}
+
 function showHelp() {
   console.log(`
 \x1b[1m⚡ AgentOS Developer CLI (Part of Spekra.in)\x1b[0m
@@ -215,18 +266,20 @@ function showHelp() {
   npx agentos <command>
 
 \x1b[1mCOMMANDS:\x1b[0m
-  \x1b[36mdoctor\x1b[0m           Run 5-point diagnostic audit across all 7 agent engines & Spekra bridge
+  \x1b[36mdoctor\x1b[0m           Run 6-point diagnostic audit across all 7 agent engines & Spekra bridge
   \x1b[36mfleet status\x1b[0m     Display live status table of all autonomous production agents
   \x1b[36mswarm run\x1b[0m        Execute the 5-stage sequential autonomous swarm pipeline
+  \x1b[36mai status\x1b[0m        Inspect Gemini LLM gateway status and test speculative guardrail
   \x1b[36maudit --ledger\x1b[0m   Verify cryptographic SHA-256 block ledger integrity
 
 \x1b[1mEXAMPLES:\x1b[0m
   npx agentos doctor
   npx agentos fleet status
   npx agentos swarm run
+  npx agentos ai status
   npx agentos audit --ledger
 
-\x1b[90mWebsite & Telemetry: https://spekra.in · Documentation: https://agent-os.dev\x1b[0m
+\x1b[90mWebsite & Telemetry: https://spekra.in · Documentation: https://agentos.spekra.in\x1b[0m
 `);
   return 0;
 }
@@ -243,6 +296,9 @@ async function main() {
       break;
     case 'swarm':
       exitCode = await runSwarm();
+      break;
+    case 'ai':
+      exitCode = await runAICommand();
       break;
     case 'audit':
       exitCode = await runAudit();

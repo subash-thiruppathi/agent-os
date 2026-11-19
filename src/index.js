@@ -16,6 +16,10 @@
 
 // Mobile & Core Engine Primitives
 export {
+  AgentOSLLMGateway
+} from './llm-gateway.js';
+
+export {
   SpeculativeVerifier,
   PROHIBITED_COLLECTION_PATTERNS
 } from '../agent-os-mobile/src/speculative-verifier.js';

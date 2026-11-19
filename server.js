@@ -17,6 +17,7 @@ import { AgentMemoryGraph, MemoryPrivacyTier } from './agent-os-mobile/src/memor
 import { AgentSelfHealer } from './agent-os-mobile/src/self-healer.js';
 import { SpeculativeVerifier } from './agent-os-mobile/src/speculative-verifier.js';
 import { SpekraTelemetryBridge } from './agent-os-mobile/src/spekra-bridge.js';
+import { AgentOSLLMGateway } from './src/llm-gateway.js';
 
 const PORT = 3000;
 
@@ -36,6 +37,7 @@ const memoryGraph = new AgentMemoryGraph();
 const selfHealer = new AgentSelfHealer();
 const verifier = new SpeculativeVerifier();
 const spekraBridge = new SpekraTelemetryBridge({ environment: 'production' });
+const llmGateway = new AgentOSLLMGateway();
 
 // Pre-seed an entity memory
 memoryGraph.recordFact({
@@ -104,6 +106,55 @@ const server = http.createServer(async (req, res) => {
         omnilife: { name: 'OmniLife', status: 'ACTIVE', dormantFlagged: omnilife.subscriptions.findDormantSubscriptions(90).length }
       }
     }));
+    return;
+  }
+
+  // Gemini LLM Gateway Status & Live Generative Generation
+  if (pathname === '/api/ai/status') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      configured: llmGateway.isConfigured,
+      model: llmGateway.model,
+      guardrail: 'SpeculativeVerifier Active (Math + FDCPA + Dual-Control)'
+    }));
+    return;
+  }
+
+  if (pathname === '/api/ai/generate' && req.method === 'POST') {
+    const { actionType, payload } = await readJson();
+    let result = null;
+
+    if (actionType === 'dunning') {
+      result = await llmGateway.generateDunningNotice(payload || {
+        invoiceId: 'SIM-901',
+        customerName: 'Sample Client',
+        amountCents: 50000,
+        daysPastDue: 30,
+        tone: 'friendly'
+      });
+    } else if (actionType === 'soap') {
+      result = await llmGateway.generateClinicalSoap(payload || {
+        encounterId: 'ENC-SIM',
+        clinicianName: 'Dr. Taylor',
+        patientName: 'Pat Patient',
+        dialogueTurns: [
+          { speaker: 'DOCTOR', text: 'How are you feeling today?' },
+          { speaker: 'PATIENT', text: 'I have severe headaches in the morning.' }
+        ]
+      });
+    } else if (actionType === 'dispute') {
+      result = await llmGateway.generateDisputeResolution(payload || {
+        disputeId: 'DISP-SIM',
+        customerText: 'Order arrived with water damage.',
+        purchaseAmountCents: 8500,
+        warrantyDaysRemaining: 90
+      });
+    } else {
+      result = { error: 'Unknown actionType. Supported: dunning, soap, dispute' };
+    }
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(result));
     return;
   }
 
