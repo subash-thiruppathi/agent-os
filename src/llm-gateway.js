@@ -7,7 +7,35 @@
  * pre-flight governance.
  */
 
+import fs from 'node:fs';
+import path from 'node:path';
 import { SpeculativeVerifier } from '../agent-os-mobile/src/speculative-verifier.js';
+
+function tryLoadEnv() {
+  if (process.env.GEMINI_API_KEY) return;
+  const candidates = [
+    path.resolve(process.cwd(), '.env'),
+    path.resolve(process.cwd(), '../.env')
+  ];
+  for (const envPath of candidates) {
+    if (fs.existsSync(envPath)) {
+      try {
+        const lines = fs.readFileSync(envPath, 'utf8').split('\n');
+        for (const line of lines) {
+          const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+          if (match && !process.env[match[1]]) {
+            let value = match[2] || '';
+            if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
+            if (value.startsWith("'") && value.endsWith("'")) value = value.slice(1, -1);
+            process.env[match[1]] = value.trim();
+          }
+        }
+      } catch {}
+      break;
+    }
+  }
+}
+tryLoadEnv();
 
 export class AgentOSLLMGateway {
   constructor(options = {}) {
